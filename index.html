@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>견적 Portal — HWASEUNG</title>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RFQ Portal — HWASEUNG</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900견적 버전&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -109,6 +109,22 @@ tr:last-child td{border-bottom:none}
 .kb-sub{font-size:11px;color:var(--text2)}
 .kb-foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
 
+/* Modal Styles */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;z-index:1000;padding:40px 20px}
+.modal-overlay.active{display:flex}
+.modal-content{background:white;padding:20px;border-radius:10px;width:100%;max-width:980px;position:relative;box-shadow:0 5px 15px rgba(0,0,0,0.3)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:16px}
+.modal-title{font-size:16px;font-weight:600}
+.modal-close{font-size:24px;line-height:1;cursor:pointer;border:none;background:none;font-weight:300}
+.cost-table{width:100%;border-collapse:collapse;font-size:12px;}
+.cost-table th,.cost-table td{border:1px solid var(--border);padding:6px 8px;text-align:center;}
+.cost-table th{background:var(--surface2);font-weight:600;font-size:11px;}
+.cost-table input{width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px;text-align:right;background:#fff;}
+.cost-table input:focus{outline:1px solid var(--blue);}
+.cost-table .total{font-weight:bold;background:var(--blue-lt);color:var(--blue-dk);}
+.cost-section-title{font-size:13px;font-weight:700;margin:12px 0 6px;padding-bottom:4px;border-bottom:2px solid var(--blue);color:var(--blue-dk);}
+
+
 /* bar chart */
 .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .bar-lbl{font-size:12px;color:var(--text2);width:55px;flex-shrink:0;text-align:right}
@@ -163,7 +179,7 @@ tr:last-child td{border-bottom:none}
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-  <div class="logo" style="padding:14px 16px 12px"><div class="logo-text" style="font-size:12px;color:var(--text3);letter-spacing:.04em;text-transform:uppercase;font-weight:400;margin-bottom:3px">견적 Portal</div><div style="font-family:'Noto Sans KR',sans-serif;font-size:22px;font-weight:900;font-style:italic;color:rgb(0,112,192);letter-spacing:-1px;line-height:1">HWASEUNG</div></div>
+  <div class="logo" style="padding:14px 16px 12px"><div class="logo-text" style="font-size:12px;color:var(--text3);letter-spacing:.04em;text-transform:uppercase;font-weight:400;margin-bottom:3px">RFQ Portal</div><div style="font-family:'Noto Sans KR',sans-serif;font-size:22px;font-weight:900;font-style:italic;color:rgb(0,112,192);letter-spacing:-1px;line-height:1">HWASEUNG</div></div>
   <div class="nav-sec">메인</div>
   <div class="nav-item active" id="n-dashboard" onclick="nav('dashboard',this)">
     <svg class="ni" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/></svg>
@@ -283,7 +299,7 @@ tr:last-child td{border-bottom:none}
 
   <!-- ============ RFQ 목록 ============ -->
   <div class="page" id="page-rfqlist">
-    <div style="display:flex;justify-content:flex-end;margin-bottom:8px"><button class="btn btn-sm" style="display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="1" width="10" height="14" rx="1.5" stroke="currentColor" stroke-width="1.3"/><line x1="5" y1="5" x2="11" y2="5" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="8" x2="11" y2="8" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="11" x2="9" y2="11" stroke="currentColor" stroke-width="1.2"/></svg>Excel 내보내기</button></div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:8px"><button class="btn btn-sm" style="display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="1" width="10" height="14" rx="1.5" stroke="currentColor" stroke-width="1.3"/><line x1="5" y1="5" x2="12" y2="5" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="8" x2="11" y2="8" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="11" x2="9" y2="11" stroke="currentColor" stroke-width="1.2"/></svg>Excel 내보내기</button></div>
     <div class="filter-bar">
       <select><option>전체 상태</option><option>접수</option><option>진행중</option><option>수주</option><option>실패</option><option>Holding</option><option>Drop</option></select>
       <select><option>전체 제품군</option><option>저압</option><option>고압</option><option>A/C</option><option>W/S</option><option>MOLD'G류</option></select>
@@ -453,7 +469,7 @@ tr:last-child td{border-bottom:none}
           </div>
         </div>
         <div class="card">
-          <div class="card-hd">
+          <div class="card-hd"><div class="card-title">활동 이력 타임라인</div><button class="btn btn-sm">+ 활동 추가</button></div>
           <ul class="tl">
             <li class="tl-item"><div class="tl-dot" style="background:#185FA5"></div><div class="tl-body"><div style="font-weight:600">진행중 전환</div><div>수심위 완료 — 대응 결정</div><div class="tl-date">2026.03.31 · 김형석</div></div></li>
             <li class="tl-item"><div class="tl-dot" style="background:#EF9F27"></div><div class="tl-body"><div style="font-weight:600">수심위 검토 완료 (옵션)</div><div>팀장 대응 승인. 수량 재확인 필요</div><div class="tl-date">2026.03.29 · 박부장</div></div></li>
@@ -1011,24 +1027,21 @@ tr:last-child td{border-bottom:none}
             <input id="q-rate" type="text" value="1,350" style="width:90px;padding:4px 8px;border:1px solid var(--border2);border-radius:6px;font-size:12px;font-weight:600;background:#fff;color:var(--text)">
             <span style="font-size:11px;color:var(--text2)">원 / 1단위</span>
           </div>
-          <div style="font-size:11px;color:var(--text3)" id="currency-note">수량: 대/년 &nbsp;|&nbsp; 원가·판가: 원 (KRW) &nbsp;|&nbsp; 천단위 구분 콤마 적용</div>
+          <div style="font-size:11px;color:var(--text3)" id="currency-note">수량: 대/년 | 원가·판가: 원 (KRW) | 천단위 구분 콤마 적용</div>
         </div>
         <div style="overflow-x:auto">
           <table style="min-width:1300px;border-collapse:collapse;table-layout:fixed">
-            <colgroup><col style="width:88px"><col style="width:100px"><col style="width:95px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"></colgroup>
+            <colgroup><col style="width:120px"><col style="width:140px"><col style="width:50px"><col style="width:95px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:80px"><col style="width:80px"><col style="width:90px"></colgroup>
             <thead>
               <tr>
-                <th rowspan="2" style="vertical-align:middle;border:1px solid var(--border);padding:6px 6px;font-size:11px">품번</th>
-                <th rowspan="2" style="vertical-align:middle;border:1px solid var(--border);padding:6px 6px;font-size:11px">품명</th>
-                <th rowspan="2" style="vertical-align:middle;border:1px solid var(--border);padding:6px 6px;font-size:11px">라인</th>
-                <th colspan="6" style="text-align:center;border:1px solid var(--border);padding:5px;color:var(--blue);font-size:11px">수량 (대/년)</th>
-                <th colspan="6" style="text-align:center;border:1px solid var(--border);padding:5px;color:var(--amber);font-size:11px">원가 <span id="hd-cost-unit">(원)</span></th>
-                <th colspan="6" style="text-align:center;border:1px solid var(--border);padding:5px;color:var(--green);font-size:11px">판가 <span id="hd-price-unit">(원)</span></th>
-              </tr>
-              <tr>
-                <th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y0</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y1</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y2</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y3</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y4</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y5</th>
-                <th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y0</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y1</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y2</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y3</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y4</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y5</th>
-                <th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y0</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y1</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y2</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y3</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y4</th><th style="text-align:center;border:1px solid var(--border);padding:3px;font-size:10px">Y5</th>
+                <th >품번</th>
+                <th >품명</th>
+                <th >U/S</th>
+                <th >라인</th>
+                <th >Y0 수량</th><th >Y1 수량</th><th >Y2 수량</th><th >Y3 수량</th><th >Y4 수량</th><th >Y5 수량</th>
+                <th >원가</th>
+                <th >판가</th>
+                <th ></th>
               </tr>
             </thead>
             <tbody id="quote-tbody"></tbody>
@@ -1158,8 +1171,131 @@ tr:last-child td{border-bottom:none}
 
 
   </div><!-- /content -->
-</div><!-- /main -->
 </div><!-- /app -->
+
+<!-- 상세 원가 입력 Modal -->
+<div class="modal-overlay" id="cost-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title" id="modal-pn-title">품번: 85859456 상세 원가 입력</h2>
+            <button class="modal-close" onclick="closeCostModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <table class="cost-table" id="detailed-cost-table">
+                <thead>
+                    <tr><th rowspan="2">구분</th><th rowspan="2">항목</th><th colspan="2">비용</th></tr>
+                    <tr><th>직접(Direct)</th><th>간접(In-direct)</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="1" style="vertical-align: middle;">재료비<br>(MATERIAL)</th>
+                        <td>자재비</td>
+                        <td><input type="number" id="c-mat-dir" value="5.06" oninput="calculateDetailedCost()"></td>
+                        <td style="background-color: #f0f0f0;"></td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2" style="vertical-align: middle;">노무비<br>(LABOR)</th>
+                        <td>직접 노무비</td>
+                        <td><input type="number" id="c-lab-dir" value="1.15" oninput="calculateDetailedCost()"></td>
+                        <td style="background-color: #f0f0f0;"></td>
+                    </tr>
+                    <tr>
+                        <td>간접 노무비</td>
+                        <td style="background-color: #f0f0f0;"></td>
+                        <td><input type="number" id="c-lab-ind" value="0.35" oninput="calculateDetailedCost()"></td>
+                    </tr>
+                     <tr>
+                        <th rowspan="2" style="vertical-align: middle;">경비<br>(Overhead)</th>
+                        <td>직접 경비</td>
+                        <td><input type="number" id="c-ovh-dir" value="0.31" oninput="calculateDetailedCost()"></td>
+                        <td style="background-color: #f0f0f0;"></td>
+                    </tr>
+                    <tr>
+                        <td>간접 경비</td>
+                        <td style="background-color: #f0f0f0;"></td>
+                        <td><input type="number" id="c-ovh-ind" value="0.35" oninput="calculateDetailedCost()"></td>
+                    </tr>
+                    <tr class="total">
+                        <th colspan="2">제조원가 (MANUFACTURING COST)</th>
+                        <td id="mfg-cost-dir">6.52</td>
+                        <td id="mfg-cost-ind">0.70</td>
+                    </tr>
+                     <tr class="total">
+                        <th colspan="2">제조원가 합계</th>
+                        <td colspan="2" id="mfg-cost-total">7.22</td>
+                    </tr>
+                    <tr>
+                        <th rowspan="4" style="vertical-align: middle;">판매관리비<br>(SG&A)</th>
+                        <td>M/M</td>
+                         <td><input type="number" id="c-sga-mm" value="0.05" oninput="calculateDetailedCost()"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>판매관리 간접비</td>
+                        <td style="background-color: #f0f0f0;"></td>
+                        <td><input type="number" id="c-sga-ind" value="0.16" oninput="calculateDetailedCost()"></td>
+                    </tr>
+                     <tr>
+                        <td>주재원 (Resident)</td>
+                        <td><input type="number" id="c-sga-res" value="0.61" oninput="calculateDetailedCost()"></td>
+                         <td style="background-color: #f0f0f0;"></td>
+                    </tr>
+                    <tr>
+                        <td>특근 (Expatriate)</td>
+                        <td><input type="number" id="c-sga-exp" value="0.14" oninput="calculateDetailedCost()"></td>
+                         <td style="background-color: #f0f0f0;"></td>
+                    </tr>
+                    <tr>
+                        <th rowspan="6" style="vertical-align: middle;">기타 비용<br>(Other Expense)</th>
+                        <td>FG Defect</td>
+                        <td><input type="number" id="c-oth-fg" value="0.07" oninput="calculateDetailedCost()"></td>
+                        <td style="background-color: #f0f0f0;"></td>
+                    </tr>
+                    <tr>
+                        <td>Building Rental</td>
+                        <td style="background-color: #f0f0f0;"></td>
+                        <td><input type="number" id="c-oth-bldg" value="0.00" oninput="calculateDetailedCost()"></td>
+                    </tr>
+                    <tr>
+                        <td>Industrial Waste</td>
+                        <td style="background-color: #f0f0f0;"></td>
+                        <td><input type="number" id="c-oth-indw" value="0.00" oninput="calculateDetailedCost()"></td>
+                    </tr>
+                    <tr>
+                        <td>Mold Amortization</td>
+                         <td style="background-color: #f0f0f0;"></td>
+                        <td><input type="number" id="c-oth-mold" value="0.00" oninput="calculateDetailedCost()"></td>
+                    </tr>
+                    <tr>
+                        <td>Profile Development</td>
+                         <td style="background-color: #f0f0f0;"></td>
+                        <td><input type="number" id="c-oth-prof" value="0.06" oninput="calculateDetailedCost()"></td>
+                    </tr>
+                     <tr>
+                        <td>Royalty</td>
+                         <td style="background-color: #f0f0f0;"></td>
+                        <td><input type="number" id="c-oth-royal" value="0.25" oninput="calculateDetailedCost()"></td>
+                    </tr>
+                     <tr class="total">
+                        <th colspan="2">총원가 (TOTAL COST)</th>
+                        <td id="total-cost-dir">6.86</td>
+                        <td id="total-cost-ind">1.71</td>
+                    </tr>
+                     <tr class="total">
+                        <th colspan="2">총원가 합계</th>
+                        <td colspan="2" id="total-cost-grand">8.57</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:16px">
+                <button class="btn btn-sm" onclick="closeCostModal()">취소</button>
+                <button class="btn btn-sm btn-p" onclick="saveDetailedCost()">저장</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script>
 const PAGE_TITLES={dashboard:'Overview',rfqlist:'RFQ 목록',rfqdetail:'RFQ 목록',kanban:'진행 보드',rfqnew:'RFQ 등록',analytics:'수주 분석',cumulative:'누적 수주 현황',customers:'고객사 관리', admins:'담당자 관리',quote:'견적 작성'};
@@ -1235,48 +1371,50 @@ function goStep(n){
 }
 
 const LINE_OPTS=['A/C','B/H','I/C','저압외','D/S','B/S','G/R','기타'];
-const TS='border:1px solid #e0e0e0;padding:4px 5px';
-const IS='width:52px;padding:2px 4px;border:1px solid #ddd;border-radius:4px;font-size:11px;background:#fff;color:#1a1a1a;font-family:inherit;text-align:right';
-const SS='width:88px;padding:2px 4px;border:1px solid #ddd;border-radius:4px;font-size:11px;background:#fff;color:#1a1a1a';
+const IS_NUM='width:100%;padding:2px 4px;border:1px solid #ddd;border-radius:4px;font-size:11px;background:#fff;color:#1a1a1a;font-family:inherit;text-align:right';
 
 function fmtNum(v){ const n=parseFloat(String(v).replace(/,/g,'')); if(isNaN(n)) return v; return n.toLocaleString('ko-KR');}
 function onNumBlur(el){ const n=parseFloat(String(el.value).replace(/,/g,'')); if(!isNaN(n)) el.value=n.toLocaleString('ko-KR'); calcSum(); }
 
-function makeRow(){
+function makeRow(uuid){
   const opts=LINE_OPTS.map(l=>`<option>${l}</option>`).join('');
-  const numCell=()=>`<td style="${TS}"><input style="${IS}" placeholder="-" oninput="calcSum()" onblur="onNumBlur(this)"></td>`;
-  const cells=Array(18).fill(0).map(numCell).join('');
+  const numCell=(name)=>`<td><input name="${name}" style="${IS_NUM}" placeholder="-" oninput="calcSum(this)" onblur="onNumBlur(this)"></td>`;
   const tr=document.createElement('tr');
-  tr.innerHTML=`<td style="${TS}"><input style="width:82px;padding:2px 5px;border:1px solid #ddd;border-radius:4px;font-size:11px;background:#fff;color:#1a1a1a;font-family:inherit" placeholder="품번"></td><td style="${TS}"><input style="width:90px;padding:2px 5px;border:1px solid #ddd;border-radius:4px;font-size:11px;background:#fff;color:#1a1a1a;font-family:inherit" placeholder="품명"></td><td style="${TS}"><select style="${SS}">${opts}</select></td>${cells}`;
+  tr.setAttribute('data-row-id', uuid);
+  tr.innerHTML=`
+    <td><input name="pn" style="width:100%; font-size:11px;"></td>
+    <td><input name="p-name" style="width:100%; font-size:11px;"></td>
+    <td><input name="usage" type="number" value="1" style="${IS_NUM}"></td>
+    <td><select name="line" style="width:100%; font-size:11px;">${opts}</select></td>
+    ${numCell('y0_vol')} ${numCell('y1_vol')} ${numCell('y2_vol')} ${numCell('y3_vol')} ${numCell('y4_vol')} ${numCell('y5_vol')}
+    <td><input name="cost" style="${IS_NUM}" onblur="onNumBlur(this)"></td>
+    <td><input name="price" style="${IS_NUM}" onblur="onNumBlur(this)"></td>
+    <td><button class="btn btn-sm" onclick="openCostModal('${uuid}')">상세 입력</button></td>
+    `;
   return tr;
 }
 
-function initRows(){const tb=document.getElementById('quote-tbody');if(!tb)return;tb.innerHTML='';tb.appendChild(makeRow());}
-function addRow(){const tb=document.getElementById('quote-tbody');if(tb)tb.appendChild(makeRow());}
+function addRow(){
+    const uuid = 'row-' + Date.now();
+    const tb=document.getElementById('quote-tbody');
+    if(tb) tb.appendChild(makeRow(uuid));
+}
 
 function calcSum(){
   const rows=document.querySelectorAll('#quote-tbody tr');
   let tS=0,tP=0;
   rows.forEach(row=>{
-    const inp=row.querySelectorAll('input[type!=radio]');
+    const getVal = (name) => +(row.querySelector(`[name=${name}]`)?.value.replace(/,/g,'') || 0);
+    const cost = getVal('cost');
+    const price = getVal('price');
+    
     for(let y=0;y<6;y++){
-      const q=+(inp[2+y]?.value||'').replace(/,/g,'')||0; const cv=+(inp[8+y]?.value||'').replace(/,/g,'')||0; const p=+(inp[14+y]?.value||'').replace(/,/g,'')||0;
-      tS+=q*p; tP+=q*(p-cv);
+      const q = getVal(`y${y}_vol`);
+      tS += q*price; tP += q*(price-cost);
     }
   });
   document.getElementById('c-sales').textContent=tS?(tS/1e8).toFixed(1):'—';
   document.getElementById('c-profit').textContent=tP?(tP/1e8).toFixed(1):'—';
-  if(tS){
-    const fr=document.querySelector('#quote-tbody tr'); const fi=fr?.querySelectorAll('input[type!=radio]');
-    const p0=+(fi?.[14]?.value||'').replace(/,/g,'')||0; const c0=+(fi?.[8]?.value||'').replace(/,/g,'')||0;
-    document.getElementById('c-r1').textContent=p0>0?((p0-c0)/p0*100).toFixed(1)+'%':'—';
-    document.getElementById('c-r2').textContent=(tP/tS*100).toFixed(1)+'%';
-  } else {document.getElementById('c-r1').textContent='—';document.getElementById('c-r2').textContent='—';}
-}
-
-function filterResult(type){
-  ['all','won','lost'].forEach(t=>{ const b=document.getElementById('f-'+t); b.style.background=t===type?'var(--blue)':'#fff'; b.style.color=t===type?'#fff':'var(--text)'; b.style.borderColor=t===type?'var(--blue)':'var(--border2)'; });
-  document.querySelectorAll('#result-tbody tr').forEach(tr=>{ tr.style.display=type==='all'||tr.dataset.result===type?'':'none'; });
 }
 
 function submitRfq(){ alert('RFQ 등록 완료!\nRFQ 번호: 2026-03-31-2-1 (자동 채번)'); navToList(); }
@@ -1440,12 +1578,67 @@ function deleteAdmin() {
     }
 }
 
+/* ── 상세 원가 Modal ── */
+let activeRowId = null;
+const modal = document.getElementById('cost-modal');
+
+function openCostModal(rowId){
+    activeRowId = rowId;
+    const mainRow = document.querySelector(`tr[data-row-id="${rowId}"]`);
+    const pn = mainRow.querySelector('[name="pn"]').value;
+    document.getElementById('modal-pn-title').textContent = `품번: ${pn || '(미입력)'} 상세 원가 입력`;
+    modal.classList.add('active');
+    calculateDetailedCost();
+}
+
+function closeCostModal(){
+    modal.classList.remove('active');
+    activeRowId = null;
+}
+
+function saveDetailedCost(){
+    const totalCost = parseFloat(document.getElementById('total-cost-grand').textContent) || 0;
+    const mainRow = document.querySelector(`tr[data-row-id="${activeRowId}"]`);
+    if(mainRow){
+        mainRow.querySelector('[name="cost"]').value = totalCost.toFixed(2);
+    }
+    closeCostModal();
+}
+
+function getNum(id){ return parseFloat(document.getElementById(id).value) || 0; }
+
+function calculateDetailedCost(){
+    const c = {
+        matDir: getNum('c-mat-dir'), labDir: getNum('c-lab-dir'), labInd: getNum('c-lab-ind'),
+        ovhDir: getNum('c-ovh-dir'), ovhInd: getNum('c-ovh-ind'),
+        sgaMM: getNum('c-sga-mm'), sgaInd: getNum('c-sga-ind'), sgaRes: getNum('c-sga-res'), sgaExp: getNum('c-sga-exp'),
+        othFg: getNum('c-oth-fg'), othBldg: getNum('c-oth-bldg'), othIndw: getNum('c-oth-indw'),
+        othMold: getNum('c-oth-mold'), othProf: getNum('c-oth-prof'), othRoyal: getNum('c-oth-royal'),
+    };
+    const mfgCostDir = c.matDir + c.labDir + c.ovhDir;
+    const mfgCostInd = c.labInd + c.ovhInd;
+    const mfgCostTotal = mfgCostDir + mfgCostInd;
+    
+    document.getElementById('mfg-cost-dir').textContent = mfgCostDir.toFixed(2);
+    document.getElementById('mfg-cost-ind').textContent = mfgCostInd.toFixed(2);
+    document.getElementById('mfg-cost-total').textContent = mfgCostTotal.toFixed(2);
+    
+    const totalCostDir = mfgCostDir + c.sgaMM + c.sgaRes + c.sgaExp + c.othFg;
+    const totalCostInd = mfgCostInd + c.sgaInd + c.othBldg + c.othIndw + c.othMold + c.othProf + c.othRoyal;
+    const grandTotal = totalCostDir + totalCostInd;
+    
+    document.getElementById('total-cost-dir').textContent = totalCostDir.toFixed(2);
+    document.getElementById('total-cost-ind').textContent = totalCostInd.toFixed(2);
+    document.getElementById('total-cost-grand').textContent = grandTotal.toFixed(2);
+}
+
 
 // 최초 로드 시 초기화
 document.addEventListener('DOMContentLoaded', ()=>{
     onProgressStatus('진행중');
     onNewStatus('진행중');
     initRows();
+    addRow();
     calcLTA();
     calcInvTotal();
 });
