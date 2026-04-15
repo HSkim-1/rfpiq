@@ -307,6 +307,7 @@ tr:last-child td{border-bottom:none}
     <div class="filter-bar">
       <select><option>진행 상태</option><option>접수</option><option>진행중</option><option>수주</option><option>실패</option><option>Holding</option><option>Drop</option></select>
       <select><option>RHQ</option><option>KRHQ</option><option>ARHQ</option><option>ERHQ</option></select>
+      <select><option>FL/SL</option><option>FL</option><option>SL</option></select>
       <select><option>견적 구분</option><option>RFQ</option><option>RFI</option><option>RFP</option><option>사전SR</option></select>
       <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
       <select><option>입찰구분</option><option>경쟁</option><option>심의</option><option>전략</option></select>
@@ -477,8 +478,8 @@ tr:last-child td{border-bottom:none}
         <div class="card">
           <div class="card-hd"><div class="card-title">활동 이력 타임라인</div><button class="btn btn-sm">+ 활동 추가</button></div>
           <ul class="tl">
-            <li class="tl-item"><div class="tl-dot" style="background:#185FA5"></div><div class="tl-body"><div style="font-weight:600">진행중 전환</div><div>수심위 완료 — 대응 결정</div><div class="tl-date">2026.03.31 · 김형석</div></div></li>
-            <li class="tl-item"><div class="tl-dot" style="background:#EF9F27"></div><div class="tl-body"><div style="font-weight:600">수심위 검토 완료 (옵션)</div><div>팀장 대응 승인. 수량 재확인 필요</div><div class="tl-date">2026.03.29 · 박부장</div></div></li>
+            <li class="tl-item"><div class="tl-dot" style="background:#185FA5"></div><div class="tl-body"><div style="font-weight:600">USMCA 검토</div><div>견적 조건에 USMCA 만족 요건 접수</div><div class="tl-date">2026.03.31 · 김형석</div></div></li>
+            <li class="tl-item"><div class="tl-dot" style="background:#EF9F27"></div><div class="tl-body"><div style="font-weight:600">수심위 검토 완료 (옵션)</div><div>수심위2안으로 대응 결정. 수량 재확인 필요</div><div class="tl-date">2026.03.29 · 박부장</div></div></li>
             <li class="tl-item"><div class="tl-dot" style="background:#3B6D11"></div><div class="tl-body"><div style="font-weight:600">고객 미팅 완료</div><div>양재동 구매팀 방문, 요구사항 청취</div><div class="tl-date">2026.03.28 · 김형석</div></div></li>
             <li class="tl-item"><div class="tl-dot" style="background:#888"></div><div class="tl-body"><div style="font-weight:600">RFQ 접수 등록</div><div>이메일 수신, 포털 등록 완료</div><div class="tl-date">2026.03.28 · 김형석</div></div></li>
           </ul>
@@ -526,7 +527,7 @@ tr:last-child td{border-bottom:none}
             <div style="margin-top:6px">
               <div class="radio-group">
                 <label><input type="radio" name="mold-t2" checked> 일시불</label>
-                <label><input type="radio" name="mold-t2"> 상각 (SOP+3Y)</label>
+                <label><input type="radio" name="mold-t2"> 상각</label>
               </div>
             </div>
             <div style="margin-top:8px;text-align:right;font-size:13px;font-weight:600">합계: <span style="color:var(--blue)">3.0억</span></div>
@@ -546,19 +547,19 @@ tr:last-child td{border-bottom:none}
         <div style="display:flex;flex-direction:column;gap:12px">
           <div style="padding:12px 14px;border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--blue)">
             <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-              <span style="font-size:12px;font-weight:600">1차 피드백 — 가격 재검토 요청</span>
+              <span style="font-size:12px;font-weight:600">가격 재검토 - HMG 구매팀</span>
               <span style="font-size:11px;color:var(--text3)">2026.04.01 · 김형석</span>
             </div>
-            <div style="font-size:12px;color:var(--text2);line-height:1.6">HMG 구매팀에서 Y0 판가 15,000원이 경쟁사 대비 약 3% 높다는 피드백. 원가절감 방안 마련 후 재제출 요청. 마감은 4/6까지로 연장 합의.</div>
-            <div style="margin-top:8px;display:flex;gap:8px"><span class="badge b-amber">가격 재검토</span><span class="badge b-gray">마감 연장</span></div>
+            <div style="font-size:12px;color:var(--text2);line-height:1.6">경쟁사 대비 약 3% 높다는 피드백. 원가절감 방안 마련 후 재제출 요청. 마감은 5/6까지로 연장 합의</div>
+            
           </div>
           <div style="padding:12px 14px;border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--green)">
             <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-              <span style="font-size:12px;font-weight:600">사양 확인 — 도면 rev.2 반영 요청</span>
+              <span style="font-size:12px;font-weight:600">사양 변경 - 남양연구소</span>
               <span style="font-size:11px;color:var(--text3)">2026.03.29 · 김형석</span>
             </div>
-            <div style="font-size:12px;color:var(--text2);line-height:1.6">NQ701 품번 도면 rev.2로 업데이트 요청. 단면적 변경으로 원가 재산출 필요. 약 ±2% 이내 변동 예상.</div>
-            <div style="margin-top:8px;display:flex;gap:8px"><span class="badge b-teal">사양 변경</span></div>
+            <div style="font-size:12px;color:var(--text2);line-height:1.6">NQ701 품번 스틸 사양 변경. 부분품 변경으로 원가 재산출 필요. 약 ±2% 이내 변동 예상</div>
+            
           </div>
         </div>
         <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:14px">
@@ -616,8 +617,8 @@ tr:last-child td{border-bottom:none}
           <span class="badge b-purple">LTA 연계</span>
         </div>
         <div style="background:#EEEDFE;border:1px solid #AFA9EC;border-radius:8px;padding:12px 14px;margin-bottom:16px">
-          <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:4px">일시불 지급이란?</div>
-          <div style="font-size:12px;color:var(--purple);opacity:.8;line-height:1.6">LTA 단가 인하 조건 수용 대가로 고객사로부터 일시에 지급받는 금액입니다. 금형비 선지원, 개발비 보전 등의 명목으로 지급될 수 있습니다.</div>
+          <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:4px">일시불 지급</div>
+          <div style="font-size:12px;color:var(--purple);opacity:.8;line-height:1.6">수주 조건으로 CR 또는 BP 지급 조건.</div>
         </div>
 
         <!-- 일시불 항목들 -->
@@ -626,7 +627,7 @@ tr:last-child td{border-bottom:none}
             <div class="fr3">
               <div class="fg" style="margin-bottom:0">
                 <label>지급 항목명</label>
-                <input class="fc" value="금형비 일시 지원">
+                <input class="fc" value="수주 조건부">
               </div>
               <div class="fg" style="margin-bottom:0">
                 <label>지급 금액 (억원)</label>
@@ -795,6 +796,7 @@ tr:last-child td{border-bottom:none}
       <select><option>RHQ</option><option>KRHQ</option><option>ARHQ</option><option>ERHQ</option></select>
       <select><option>고객사</option><option>HMG</option><option>STLS</option><option>BMW</option><option>GM</option></select>
       <select><option>담당자</option><option>김형석</option><option>화승</option><option>이현주</option></select>
+      <select><option>FL/SL</option><option>FL</option><option>SL</option></select>
       <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
       <select><option value="KRW">KRW (억원)</option><option value="USD">USD (백만)</option><option value="EUR">EUR (백만)</option><option value="CNY">CNY (백만)</option></select>
       <button class="btn btn-p btn-sm">조회</button>
@@ -855,12 +857,12 @@ tr:last-child td{border-bottom:none}
         <div class="card-title">수주·실패 상세 내역 조회</div>
         <div style="display:flex;gap:8px">
           <button class="btn btn-sm" onclick="filterResult('all')" id="f-all" style="background:var(--blue);color:#fff;border-color:var(--blue)">전체</button>
-          <button class="btn btn-sm" onclick="filterResult('won')" id="f-won">수주만</button>
-          <button class="btn btn-sm" onclick="filterResult('lost')" id="f-lost">실패만</button>
+          <button class="btn btn-sm" onclick="filterResult('won')" id="f-won">수주</button>
+          <button class="btn btn-sm" onclick="filterResult('lost')" id="f-lost">실패</button>
         </div>
       </div>
       <table class="tbl-hover">
-        <thead><tr><th>RFQ</th><th>업체</th><th>차종</th><th>제품군</th><th>담당</th><th>매출(억)</th><th>이익율</th><th>실패사유 요약</th><th>결과</th><th>확정일</th></tr></thead>
+        <thead><tr><th>RFQ</th><th>업체</th><th>차종</th><th>제품군</th><th>담당</th><th>매출(억)</th><th>이익율</th><th>실패 유형</th><th>결과</th><th>확정일</th></tr></thead>
         <tbody id="result-tbody">
           <tr data-result="won" onclick="openDetail('2026-03-20-1-1')"><td><span class="rid">2026-03-20-1-1</span></td><td>HMG 울산</td><td>OS</td><td>저압</td><td>김형석</td><td style="color:var(--blue);font-weight:500">187</td><td style="color:var(--green)">6.8%</td><td>—</td><td><span class="badge b-green">수주</span></td><td>2026.03.28</td></tr>
           <tr data-result="lost" onclick="openDetail('2026-03-15-3-1')"><td><span class="rid">2026-03-15-3-1</span></td><td>GM</td><td>9BXX</td><td>W/S</td><td>화승</td><td>—</td><td>—</td><td style="color:var(--red)">가격 경쟁 열위</td><td><span class="badge b-red">실패</span></td><td>2026.03.25</td></tr>
@@ -877,6 +879,7 @@ tr:last-child td{border-bottom:none}
       <select><option>기간</option><option>2026년</option><option>2025년</option><option>2024년</option></select>
       <select><option>RHQ</option><option>KRHQ</option><option>ARHQ</option><option>ERHQ</option></select>
       <select><option>고객사</option><option>HMG</option><option>STLS</option><option>BMW</option><option>GM</option></select>
+      <select><option>FL/SL</option><option>FL</option><option>SL</option></select>
       <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
       <select><option value="KRW">KRW (억원)</option><option value="USD">USD (백만)</option><option value="EUR">EUR (백만)</option><option value="CNY">CNY (백만)</option></select>
       <button class="btn btn-p btn-sm">조회</button>
