@@ -188,7 +188,7 @@ tr:last-child td{border-bottom:none}
   <div class="nav-sec">RFQ 관리</div>
   <div class="nav-item" id="n-rfqlist" onclick="navToList()">
     <svg class="ni" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.3"/><line x1="4" y1="5" x2="12" y2="5" stroke="currentColor" stroke-width="1.3"/><line x1="4" y1="8" x2="12" y2="8" stroke="currentColor" stroke-width="1.3"/><line x1="4" y1="11" x2="9" y2="11" stroke="currentColor" stroke-width="1.3"/></svg>
-    RFQ 목록
+    견적 목록
   </div>
   <div class="nav-item" id="n-kanban" onclick="nav('kanban',this)">
     <svg class="ni" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="4" height="10" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="6" y="3" width="4" height="7" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="11" y="3" width="4" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/></svg>
@@ -196,7 +196,7 @@ tr:last-child td{border-bottom:none}
   </div>
   <div class="nav-item" id="n-rfqnew" onclick="nav('rfqnew',this)">
     <svg class="ni" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.3"/><line x1="8" y1="5" x2="8" y2="11" stroke="currentColor" stroke-width="1.3"/><line x1="5" y1="8" x2="11" y2="8" stroke="currentColor" stroke-width="1.3"/></svg>
-    RFQ 등록
+    견적 등록
   </div>
   <div class="nav-sec">분석·조회</div>
   <div class="nav-item" id="n-analytics" onclick="nav('analytics',this)">
@@ -223,7 +223,7 @@ tr:last-child td{border-bottom:none}
   <div class="topbar">
     <div class="topbar-title" id="page-title">Overview</div>
     <div class="topbar-right">
-      <button class="btn btn-p btn-sm" onclick="nav('rfqnew',document.getElementById('n-rfqnew'))">+ 신규 RFQ 등록</button>
+      <button class="btn btn-p btn-sm" onclick="nav('rfqnew',document.getElementById('n-rfqnew'))">+ 신규 견적 등록</button>
       <div class="user-chip"><div class="ava">유</div>김형석 · FL영업</div>
     </div>
   </div>
@@ -245,8 +245,8 @@ tr:last-child td{border-bottom:none}
           <table class="tbl-hover">
             <thead><tr><th>RFQ 번호</th><th>업체명</th><th>차종</th><th>제품군</th><th>마감</th><th>담당</th><th>상태</th></tr></thead>
             <tbody>
-              <tr onclick="openDetail('2026-03-31-1-1')"><td><span class="rid">2026-03-31-1-1</span></td><td>HMG 울산</td><td>NQ7</td><td>저압</td><td style="color:var(--red);font-weight:600">D-1</td><td>김형석</td><td><span class="badge b-amber">진행중</span></td></tr>
-              <tr onclick="openDetail('2026-03-28-2-1')"><td><span class="rid">2026-03-28-2-1</span></td><td>HMG 화성</td><td>EVX</td><td>W/S</td><td style="color:var(--amber);font-weight:600">D-3</td><td>화승</td><td><span class="badge b-blue">수심위</span></td></tr>
+              <tr onclick="openDetail('2026-03-31-1-1')"><td><span class="rid">2026-03-31-1-1</span></td><td>HMG 울산</td><td>NQ7</td><td>저압외</td><td style="color:var(--red);font-weight:600">D-1</td><td>김형석</td><td><span class="badge b-amber">진행중</span></td></tr>
+              <tr onclick="openDetail('2026-03-28-2-1')"><td><span class="rid">2026-03-28-2-1</span></td><td>HMG 화성</td><td>EVX</td><td>G/R</td><td style="color:var(--amber);font-weight:600">D-3</td><td>화승</td><td><span class="badge b-blue">수심위</span></td></tr>
               <tr onclick="openDetail('2026-03-25-1-2')"><td><span class="rid">2026-03-25-1-2</span></td><td>BMW</td><td>G26</td><td>A/C</td><td style="color:var(--amber)">D-5</td><td>이현주</td><td><span class="badge b-amber">진행중</span></td></tr>
               <tr onclick="openDetail('2026-03-22-3-1')"><td><span class="rid">2026-03-22-3-1</span></td><td>GM</td><td>9BXXX</td><td>W/S</td><td style="color:var(--gray)">D-7</td><td>화승</td><td><span class="badge b-gray">Holding</span></td></tr>
             </tbody>
@@ -257,7 +257,7 @@ tr:last-child td{border-bottom:none}
           <table>
             <thead><tr><th>RFQ</th><th>업체</th><th>품목</th><th>매출(억)</th><th>이익율</th><th>결과</th><th>확정일</th></tr></thead>
             <tbody>
-              <tr><td><span class="rid">2026-03-20-1-1</span></td><td>HMG 울산</td><td>OS 저압</td><td>187</td><td style="color:var(--green)">6.8%</td><td><span class="badge b-green">수주</span></td><td>2026.03.28</td></tr>
+              <tr><td><span class="rid">2026-03-20-1-1</span></td><td>HMG 울산</td><td>OS 저압외</td><td>187</td><td style="color:var(--green)">6.8%</td><td><span class="badge b-green">수주</span></td><td>2026.03.28</td></tr>
               <tr><td><span class="rid">2026-03-15-3-1</span></td><td>GM</td><td>9BXX W/S</td><td>—</td><td>—</td><td><span class="badge b-red">실패</span></td><td>2026.03.25</td></tr>
               <tr><td><span class="rid">2026-02-10-2-1</span></td><td>HMG 화성</td><td>EV3 고압</td><td>95</td><td style="color:var(--green)">5.1%</td><td><span class="badge b-green">수주</span></td><td>2026.03.10</td></tr>
             </tbody>
@@ -267,11 +267,15 @@ tr:last-child td{border-bottom:none}
       <div>
         <div class="card">
           <div class="card-hd"><div class="card-title">제품군별 수주율</div></div>
-          <div class="bar-row"><div class="bar-lbl">저압</div><div class="bar-track"><div class="bar-fill" style="width:72%;background:var(--blue)"></div></div><div class="bar-val">72%</div></div>
+
           <div class="bar-row"><div class="bar-lbl">B/H</div><div class="bar-track"><div class="bar-fill" style="width:61%;background:var(--blue)"></div></div><div class="bar-val">61%</div></div>
           <div class="bar-row"><div class="bar-lbl">A/C</div><div class="bar-track"><div class="bar-fill" style="width:58%;background:var(--blue)"></div></div><div class="bar-val">58%</div></div>
           <div class="bar-row"><div class="bar-lbl">I/C</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--green)"></div></div><div class="bar-val">80%</div></div>
-          <div class="bar-row"><div class="bar-lbl">W/S</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--amber)"></div></div><div class="bar-val">45%</div></div>
+          <div class="bar-row"><div class="bar-lbl">저압외</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--green)"></div></div><div class="bar-val">80%</div></div>
+          <div class="bar-row"><div class="bar-lbl">B/S</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--amber)"></div></div><div class="bar-val">45%</div></div>
+          <div class="bar-row"><div class="bar-lbl">D/S</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--amber)"></div></div><div class="bar-val">45%</div></div>
+          <div class="bar-row"><div class="bar-lbl">G/R</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--amber)"></div></div><div class="bar-val">45%</div></div>
+          <div class="bar-row"><div class="bar-lbl">W/S기타</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--amber)"></div></div><div class="bar-val">45%</div></div>
         </div>
         <div class="card">
           <div class="card-hd"><div class="card-title">상태 분포</div></div>
@@ -297,14 +301,16 @@ tr:last-child td{border-bottom:none}
     </div>
   </div>
 
-  <!-- ============ RFQ 목록 ============ -->
+  <!-- ============ 견적 목록 ============ -->
   <div class="page" id="page-rfqlist">
     <div style="display:flex;justify-content:flex-end;margin-bottom:8px"><button class="btn btn-sm" style="display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="1" width="10" height="14" rx="1.5" stroke="currentColor" stroke-width="1.3"/><line x1="5" y1="5" x2="12" y2="5" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="8" x2="11" y2="8" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="11" x2="9" y2="11" stroke="currentColor" stroke-width="1.2"/></svg>Excel 내보내기</button></div>
     <div class="filter-bar">
-      <select><option>전체 상태</option><option>접수</option><option>진행중</option><option>수주</option><option>실패</option><option>Holding</option><option>Drop</option></select>
-      <select><option>전체 제품군</option><option>저압</option><option>고압</option><option>A/C</option><option>W/S</option><option>MOLD'G류</option></select>
-      <select><option>전체 입찰구분</option><option>경쟁</option><option>심의</option><option>전략</option></select>
-      <select><option>전체 담당자</option><option>김형석</option><option>화승</option><option>이현주</option></select>
+      <select><option>진행 상태</option><option>접수</option><option>진행중</option><option>수주</option><option>실패</option><option>Holding</option><option>Drop</option></select>
+      <select><option>RHQ</option><option>KRHQ</option><option>ARHQ</option><option>ERHQ</option></select>
+      <select><option>견적 구분</option><option>RFQ</option><option>RFI</option><option>RFP</option><option>사전SR</option></select>
+      <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
+      <select><option>입찰구분</option><option>경쟁</option><option>심의</option><option>전략</option></select>
+      <select><option>담당자</option><option>김형석</option><option>화승</option><option>이현주</option></select>
       <div class="date-sep">접수일</div>
       <input type="date" value="2026-01-01" style="font-size:11px;padding:5px 8px">
       <div class="date-sep">~</div>
@@ -315,10 +321,10 @@ tr:last-child td{border-bottom:none}
       <table class="tbl-hover">
         <thead><tr><th>RFQ 번호</th><th>차수</th><th>담당</th><th>입찰</th><th>업체명</th><th>차종</th><th>제품군</th><th>생산지</th><th>SOP</th><th>생산대수/년</th><th>매출(억)</th><th>이익율</th><th>상태</th></tr></thead>
         <tbody>
-          <tr onclick="openDetail('2026-03-31-1-1')"><td><span class="rid">2026-03-31-1-1</span></td><td>1차</td><td>김형석</td><td><span class="badge b-gray">경쟁</span></td><td>HMG 울산</td><td>NQ7</td><td>저압</td><td>R&A</td><td>2029.01</td><td>10,000</td><td style="color:var(--blue);font-weight:500">150</td><td style="color:var(--green)">6.2%</td><td><span class="badge b-amber">진행중</span></td></tr>
+          <tr onclick="openDetail('2026-03-31-1-1')"><td><span class="rid">2026-03-31-1-1</span></td><td>1차</td><td>김형석</td><td><span class="badge b-gray">경쟁</span></td><td>HMG 울산</td><td>NQ7</td><td>저압외</td><td>R&A</td><td>2029.01</td><td>10,000</td><td style="color:var(--blue);font-weight:500">150</td><td style="color:var(--green)">6.2%</td><td><span class="badge b-amber">진행중</span></td></tr>
           <tr onclick="openDetail('2026-03-28-2-1')"><td><span class="rid">2026-03-28-2-1</span></td><td>2차</td><td>화승</td><td><span class="badge b-gray">심의</span></td><td>HMG 화성</td><td>CV2</td><td>고압</td><td>HSI</td><td>2028.06</td><td>25,000</td><td>—</td><td>—</td><td><span class="badge b-blue">수심위</span></td></tr>
           <tr onclick="openDetail('2026-03-25-1-2')"><td><span class="rid">2026-03-25-1-2</span></td><td>1차</td><td>이현주</td><td><span class="badge b-gray">경쟁</span></td><td>BMW</td><td>G26</td><td>A/C</td><td>HSIA</td><td>2028.09</td><td>8,500</td><td>—</td><td>—</td><td><span class="badge b-amber">진행중</span></td></tr>
-          <tr onclick="openDetail('2026-03-20-1-1')"><td><span class="rid">2026-03-20-1-1</span></td><td>1차</td><td>김형석</td><td><span class="badge b-gray">전략</span></td><td>HMG 울산</td><td>OS</td><td>저압</td><td>R&A</td><td>2027.03</td><td>75,000</td><td style="color:var(--blue);font-weight:500">187</td><td style="color:var(--green)">6.8%</td><td><span class="badge b-green">수주</span></td></tr>
+          <tr onclick="openDetail('2026-03-20-1-1')"><td><span class="rid">2026-03-20-1-1</span></td><td>1차</td><td>김형석</td><td><span class="badge b-gray">전략</span></td><td>HMG 울산</td><td>OS</td><td>저압;</td><td>R&A</td><td>2027.03</td><td>75,000</td><td style="color:var(--blue);font-weight:500">187</td><td style="color:var(--green)">6.8%</td><td><span class="badge b-green">수주</span></td></tr>
           <tr onclick="openDetail('2026-03-15-3-1')"><td><span class="rid">2026-03-15-3-1</span></td><td>3차</td><td>화승</td><td><span class="badge b-gray">경쟁</span></td><td>GM</td><td>9BXX</td><td>W/S</td><td>HSAM</td><td>2028.01</td><td>18,000</td><td>—</td><td>—</td><td><span class="badge b-red">실패</span></td></tr>
         </tbody>
       </table>
@@ -329,7 +335,7 @@ tr:last-child td{border-bottom:none}
   <div class="page" id="page-rfqdetail">
     <button class="btn-back" onclick="navToList()">
       <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M7.5 2L4 6l3.5 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-      RFQ 목록으로
+      견적 목록으로
     </button>
 
     <!-- 상단 헤더 -->
@@ -393,7 +399,7 @@ tr:last-child td{border-bottom:none}
           </div>
            <div class="fr2">
              <div class="fg"><label>입찰구분</label><select class="fc"><option>경쟁</option><option>심의</option><option>전략</option></select></div>
-             <div class="fg"><label>제품군</label><select class="fc"><option>저압</option><option>고압</option><option>A/C</option><option>W/S</option></select></div>
+             <div class="fg"><label>제품군</label><select class="fc"><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select></div>
           </div>
            <div class="fr2">
             <div class="fg"><label>수주 Type</label><select class="fc"><option>신규</option><option>C.O</option></select></div>
@@ -710,8 +716,9 @@ tr:last-child td{border-bottom:none}
   <!-- ============ 진행 보드 (칸반) ============ -->
   <div class="page" id="page-kanban">
     <div class="filter-bar" style="margin-bottom:16px">
-      <select><option>전체 담당자</option><option>김형석</option><option>화승</option><option>이현주</option></select>
-      <select><option>전체 제품군</option><option>저압</option><option>고압</option><option>A/C</option><option>W/S</option></select>
+      <select><option>RHQ</option><option>KRHQ</option><option>ARHQ</option><option>ERHQ</option></select>
+      <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
+      <select><option>담당자</option><option>김형석</option><option>화승</option><option>이현주</option></select>
     </div>
     <div class="kanban">
       <div class="kb-col">
@@ -784,10 +791,12 @@ tr:last-child td{border-bottom:none}
   <div class="page" id="page-analytics">
     <div class="filter-bar">
       <select><option>2026년</option><option>2025년</option><option>2024년</option></select>
-      <select><option>전체 분기</option><option>Q1</option><option>Q2</option><option>Q3</option><option>Q4</option></select>
-      <select><option>전체 고객사</option><option>HMG</option><option>STLS</option><option>BMW</option><option>GM</option></select>
-      <select><option>전체 담당자</option><option>김형석</option><option>화승</option><option>이현주</option></select>
-      <select><option>전체 제품군</option><option>저압</option><option>고압</option><option>A/C</option><option>W/S</option></select>
+      <select><option>분기</option><option>Q1</option><option>Q2</option><option>Q3</option><option>Q4</option></select>
+      <select><option>RHQ</option><option>KRHQ</option><option>ARHQ</option><option>ERHQ</option></select>
+      <select><option>고객사</option><option>HMG</option><option>STLS</option><option>BMW</option><option>GM</option></select>
+      <select><option>담당자</option><option>김형석</option><option>화승</option><option>이현주</option></select>
+      <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
+      <select><option value="KRW">KRW (억원)</option><option value="USD">USD (백만)</option><option value="EUR">EUR (백만)</option><option value="CNY">CNY (백만)</option></select>
       <button class="btn btn-p btn-sm">조회</button>
     </div>
     <div class="fr4" style="margin-bottom:16px">
@@ -865,9 +874,11 @@ tr:last-child td{border-bottom:none}
   <!-- ============ 누적 수주 현황 ============ -->
   <div class="page" id="page-cumulative">
     <div class="filter-bar">
-      <select><option>전체 기간</option><option>2026년</option><option>2025년</option><option>2024년</option></select>
-      <select><option>전체 고객사</option><option>HMG</option><option>STLS</option><option>BMW</option><option>GM</option></select>
-      <select><option>전체 제품군</option><option>저압</option><option>고압</option><option>A/C</option><option>W/S</option></select>
+      <select><option>기간</option><option>2026년</option><option>2025년</option><option>2024년</option></select>
+      <select><option>RHQ</option><option>KRHQ</option><option>ARHQ</option><option>ERHQ</option></select>
+      <select><option>고객사</option><option>HMG</option><option>STLS</option><option>BMW</option><option>GM</option></select>
+      <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
+      <select><option value="KRW">KRW (억원)</option><option value="USD">USD (백만)</option><option value="EUR">EUR (백만)</option><option value="CNY">CNY (백만)</option></select>
       <button class="btn btn-p btn-sm">조회</button>
     </div>
     <div class="fr4" style="margin-bottom:16px">
@@ -889,10 +900,14 @@ tr:last-child td{border-bottom:none}
       </div>
       <div class="card">
         <div class="card-hd"><div class="card-title">제품군별 누적 수주액</div></div>
-        <div class="bar-row"><div class="bar-lbl">저압</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:var(--blue)"></div></div><div class="bar-val">1,840억</div></div>
-        <div class="bar-row"><div class="bar-lbl">고압</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--blue)"></div></div><div class="bar-val">1,220억</div></div>
-        <div class="bar-row"><div class="bar-lbl">A/C</div><div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--teal)"></div></div><div class="bar-val">980억</div></div>
-        <div class="bar-row"><div class="bar-lbl">W/S</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--amber)"></div></div><div class="bar-val">690억</div></div>
+        <div class="bar-row"><div class="bar-lbl">B/H</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:var(--blue)"></div></div><div class="bar-val">1,840억</div></div>
+        <div class="bar-row"><div class="bar-lbl">A/C</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--blue)"></div></div><div class="bar-val">1,220억</div></div>
+        <div class="bar-row"><div class="bar-lbl">I/C</div><div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--teal)"></div></div><div class="bar-val">980억</div></div>
+        <div class="bar-row"><div class="bar-lbl">저압외</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--blue)"></div></div><div class="bar-val">1,220억</div></div>
+        <div class="bar-row"><div class="bar-lbl">B/S</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--amber)"></div></div><div class="bar-val">690억</div></div>
+        <div class="bar-row"><div class="bar-lbl">D/S</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--amber)"></div></div><div class="bar-val">550억</div></div>
+        <div class="bar-row"><div class="bar-lbl">G/R</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--amber)"></div></div><div class="bar-val">890억</div></div>
+        <div class="bar-row"><div class="bar-lbl">W/S기타</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--amber)"></div></div><div class="bar-val">490억</div></div>
       </div>
     </div>
 
@@ -910,7 +925,7 @@ tr:last-child td{border-bottom:none}
     </div>
   </div>
 
-  <!-- ============ RFQ 등록 ============ -->
+  <!-- ============ 견적 등록 ============ -->
   <div class="page" id="page-rfqnew">
     <div class="steps" id="step-bar">
       <div class="step cur" id="step-1" onclick="goStep(1)">1 기본 정보</div>
@@ -939,7 +954,7 @@ tr:last-child td{border-bottom:none}
         </div>
          <div class="fr2">
           <div class="fg"><label>입찰구분 *</label><select class="fc"><option>경쟁</option><option>심의</option><option>전략</option></select></div>
-          <div class="fg"><label>제품군 *</label><select class="fc"><option>저압</option><option>고압</option><option>A/C</option><option>W/S</option><option>G/R</option><option>MOLD'G류</option></select></div>
+          <div class="fg"><label>제품군 *</label><select class="fc"><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select></div>
         </div>
         <div class="fr2">
           <div class="fg"><label>수주 Type *</label><select class="fc"><option>신규</option><option>C.O</option></select></div>
@@ -1019,41 +1034,46 @@ tr:last-child td{border-bottom:none}
           <div style="display:flex;align-items:center;gap:6px">
             <label style="font-size:11px;color:var(--text2)">통화</label>
             <select id="q-currency" style="padding:4px 8px;border:1px solid var(--border2);border-radius:6px;font-size:12px;font-weight:600;background:#fff;color:var(--text)" onchange="onCurrencyChange(this.value)">
-              <option value="KRW">KRW (원)</option><option value="USD">USD (달러)</option><option value="EUR">EUR (유로)</option><option value="CNY">CNY (위안)</option>
+              <option value="KRW" data-symbol="원">KRW (원)</option>
+              <option value="USD" data-symbol="$">USD (달러)</option>
+              <option value="EUR" data-symbol="€">EUR (유로)</option>
+              <option value="CNY" data-symbol="¥">CNY (위안)</option>
             </select>
           </div>
-          <div style="display:flex;align-items:center;gap:6px" id="exchange-rate-wrap" style="display:none">
+          <div style="display:flex;align-items:center;gap:6px" id="exchange-rate-wrap">
             <label style="font-size:11px;color:var(--text2)">원화 환율</label>
-            <input id="q-rate" type="text" value="1,350" style="width:90px;padding:4px 8px;border:1px solid var(--border2);border-radius:6px;font-size:12px;font-weight:600;background:#fff;color:var(--text)">
-            <span style="font-size:11px;color:var(--text2)">원 / 1단위</span>
+            <input id="q-rate" type="text" value="1350" oninput="calcSum(); calcInvTotal();" style="width:90px;padding:4px 8px;border:1px solid var(--border2);border-radius:6px;font-size:12px;font-weight:600;background:#fff;color:var(--text)">
+            <span id="q-rate-unit" style="font-size:11px;color:var(--text2)">원 / 1 $</span>
           </div>
-          <div style="font-size:11px;color:var(--text3)" id="currency-note">수량: 대/년 | 원가·판가: 원 (KRW) | 천단위 구분 콤마 적용</div>
         </div>
         <div style="overflow-x:auto">
           <table style="min-width:1300px;border-collapse:collapse;table-layout:fixed">
-            <colgroup><col style="width:120px"><col style="width:140px"><col style="width:50px"><col style="width:95px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:56px"><col style="width:80px"><col style="width:80px"><col style="width:90px"></colgroup>
+            <colgroup><col style="width:120px"/><col style="width:140px"/><col style="width:50px"/><col style="width:95px"/><col style="width:56px"/><col style="width:56px"/><col style="width:56px"/><col style="width:56px"/><col style="width:56px"/><col style="width:56px"/><col style="width:80px"/><col style="width:80px"/><col style="width:80px"/><col style="width:80px"/><col style="width:80px"/><col style="width:80px"/><col style="width:80px"/><col style="width:90px"/>
+        </colgroup>
             <thead>
-              <tr>
-                <th >품번</th>
-                <th >품명</th>
-                <th >U/S</th>
-                <th >라인</th>
-                <th >Y0 수량</th><th >Y1 수량</th><th >Y2 수량</th><th >Y3 수량</th><th >Y4 수량</th><th >Y5 수량</th>
-                <th >원가</th>
-                <th >판가</th>
-                <th ></th>
-              </tr>
-            </thead>
+    <tr>
+        <th>품번</th><th>품명</th><th>U/S</th><th>라인</th>
+        <th>Y0 수량</th><th>Y1 수량</th><th>Y2 수량</th><th>Y3 수량</th><th>Y4 수량</th><th>Y5 수량</th>
+        <th>원가</th><th>Y0 판가</th><th>Y1 판가</th><th>Y2 판가</th>
+        <th>Y3 판가</th><th>Y4 판가</th><th>Y5 판가</th><th></th>
+    </tr>
+    </thead>
             <tbody id="quote-tbody"></tbody>
           </table>
         </div>
         <div style="margin-top:10px"><button class="btn btn-sm" onclick="addRow()">+ 품번 행 추가</button></div>
         <div class="fr4" style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border)">
-          <div class="sc"><div class="sc-label">매출액 (억원)</div><div class="sc-val" style="font-size:17px;color:var(--blue)" id="c-sales">—</div></div>
-          <div class="sc"><div class="sc-label">이익금액 (억원)</div><div class="sc-val" style="font-size:17px;color:var(--green)" id="c-profit">—</div></div>
-          <div class="sc"><div class="sc-label">초기 이익율 (Y0)</div><div class="sc-val" style="font-size:17px;color:var(--green)" id="c-r1">—</div></div>
-          <div class="sc"><div class="sc-label">평균 이익율</div><div class="sc-val" style="font-size:17px;color:var(--green)" id="c-r2">—</div></div>
-        </div>
+          <div class="sc">
+              <div class="sc-label">매출액(억원) / <span class="sc-label-currency"></span></div>
+              <div class="sc-val" style="font-size:17px;color:var(--blue)" id="c-y0-sales">—</div>
+          </div>
+          <div class="sc">
+              <div class="sc-label">총기간 매출액(억원) / <span class="sc-label-currency"></span></div>
+              <div class="sc-val" style="font-size:17px;color:var(--blue)" id="c-total-sales">—</div>
+          </div>
+          <div class="sc"><div class="sc-label">초기이익률</div><div class="sc-val" style="font-size:17px;color:var(--green)" id="c-initial-margin">—</div></div>
+          <div class="sc"><div class="sc-label">평균이익률</div><div class="sc-val" style="font-size:17px;color:var(--green)" id="c-avg-margin">—</div></div>
+    </div>
       </div>
       <div class="card">
         <div class="card-hd"><div class="card-title">투자비 내역</div></div>
@@ -1061,10 +1081,10 @@ tr:last-child td{border-bottom:none}
           <div>
             <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center">설비 투자비 <button class="btn btn-sm" style="font-size:11px" onclick="addInvRow('equip-tbody','설비 항목')">+ 추가</button></div>
             <table class="inv-tbl" style="width:100%">
-              <thead><tr><th>항목명</th><th>수량</th><th>금액(억)</th><th></th></tr></thead>
+              <thead><tr><th>항목명</th><th>수량</th><th class="inv-th-krw">금액(억원)</th><th class="inv-th-curr">금액(통화)</th><th></th></tr></thead>
               <tbody id="equip-tbody">
-                <tr><td><input class="fc" value="프레스 설비" oninput="calcInvTotal()"></td><td><input class="fc" value="8대" style="width:60px" oninput="calcInvTotal()"></td><td><input class="fc" value="4.0" style="width:65px" oninput="calcInvTotal()"></td><td><button class="btn-ghost" style="color:var(--red)" onclick="removeInvRow(this)">✕</button></td></tr>
-                <tr><td><input class="fc" value="지그류" oninput="calcInvTotal()"></td><td><input class="fc" value="4개" style="width:60px" oninput="calcInvTotal()"></td><td><input class="fc" value="1.2" style="width:65px" oninput="calcInvTotal()"></td><td><button class="btn-ghost" style="color:var(--red)" onclick="removeInvRow(this)">✕</button></td></tr>
+                <tr><td><input class="fc" value="프레스 설비" oninput="calcInvTotal()"></td><td><input class="fc" value="8대" style="width:60px"></td><td><input class="fc inv-krw" value="4.0" style="width:65px" oninput="calcInvTotal(this, 'foreign')"></td><td><input class="fc inv-curr" value="" style="width:65px" oninput="calcInvTotal(this, 'krw')"></td><td><button class="btn-ghost" style="color:var(--red)" onclick="removeInvRow(this)">✕</button></td></tr>
+                <tr><td><input class="fc" value="지그류" oninput="calcInvTotal()"></td><td><input class="fc" value="4개" style="width:60px"></td><td><input class="fc inv-krw" value="1.2" style="width:65px" oninput="calcInvTotal(this, 'foreign')"></td><td><input class="fc inv-curr" value="" style="width:65px" oninput="calcInvTotal(this, 'krw')"></td><td><button class="btn-ghost" style="color:var(--red)" onclick="removeInvRow(this)">✕</button></td></tr>
               </tbody>
             </table>
             <div style="margin-top:8px;text-align:right;font-size:13px;font-weight:600">설비 합계: <span style="color:var(--blue)" id="equip-total">5.2억</span></div>
@@ -1072,9 +1092,9 @@ tr:last-child td{border-bottom:none}
           <div>
             <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center">금형비<button class="btn btn-sm" style="font-size:11px" onclick="addInvRow('mold-tbody','금형 항목')">+ 추가</button></div>
             <table class="inv-tbl" style="width:100%">
-              <thead><tr><th>항목명</th><th>수량</th><th>금액(억)</th><th></th></tr></thead>
+              <thead><tr><th>항목명</th><th>수량</th><th class="inv-th-krw">금액(억원)</th><th class="inv-th-curr">금액(통화)</th><th></th></tr></thead>
               <tbody id="mold-tbody">
-                <tr><td><input class="fc" value="사출금형 A타입" oninput="calcInvTotal()"></td><td><input class="fc" value="2개" style="width:60px" oninput="calcInvTotal()"></td><td><input class="fc" value="2.4" style="width:65px" oninput="calcInvTotal()"></td><td><button class="btn-ghost" style="color:var(--red)" onclick="removeInvRow(this)">✕</button></td></tr>
+                <tr><td><input class="fc" value="사출금형 A타입" oninput="calcInvTotal()"></td><td><input class="fc" value="2개" style="width:60px"></td><td><input class="fc inv-krw" value="2.4" style="width:65px" oninput="calcInvTotal(this, 'foreign')"></td><td><input class="fc inv-curr" value="" style="width:65px" oninput="calcInvTotal(this, 'krw')"></td><td><button class="btn-ghost" style="color:var(--red)" onclick="removeInvRow(this)">✕</button></td></tr>
               </tbody>
             </table>
             <div style="margin-top:6px"><div class="radio-group"><label><input type="radio" name="mold-n" checked> 일시불</label><label><input type="radio" name="mold-n"> 상각</label></div></div>
@@ -1102,7 +1122,7 @@ tr:last-child td{border-bottom:none}
         </div>
         <div style="display:flex;gap:8px;margin-top:16px">
           <button class="btn" onclick="goStep(2)">← 이전</button>
-          <button class="btn btn-p" style="margin-left:auto" onclick="submitRfq()">RFQ 등록 완료</button>
+          <button class="btn btn-p" style="margin-left:auto" onclick="submitRfq()">견적 등록 완료</button>
         </div>
       </div>
     </div>
@@ -1225,7 +1245,7 @@ tr:last-child td{border-bottom:none}
                         <td colspan="2" id="mfg-cost-total">7.22</td>
                     </tr>
                     <tr>
-                        <th rowspan="4" style="vertical-align: middle;">판매관리비<br>(SG&A)</th>
+                        <th rowspan="3" style="vertical-align: middle;">판매관리비<br>(SG&A)</th>
                         <td>M/M</td>
                          <td><input type="number" id="c-sga-mm" value="0.05" oninput="calculateDetailedCost()"></td>
                         <td></td>
@@ -1241,12 +1261,7 @@ tr:last-child td{border-bottom:none}
                          <td style="background-color: #f0f0f0;"></td>
                     </tr>
                     <tr>
-                        <td>특근 (Expatriate)</td>
-                        <td><input type="number" id="c-sga-exp" value="0.14" oninput="calculateDetailedCost()"></td>
-                         <td style="background-color: #f0f0f0;"></td>
-                    </tr>
-                    <tr>
-                        <th rowspan="6" style="vertical-align: middle;">기타 비용<br>(Other Expense)</th>
+                        <th rowspan="9" style="vertical-align: middle;">기타 비용<br>(Other Expense)</th>
                         <td>FG Defect</td>
                         <td><input type="number" id="c-oth-fg" value="0.07" oninput="calculateDetailedCost()"></td>
                         <td style="background-color: #f0f0f0;"></td>
@@ -1276,6 +1291,21 @@ tr:last-child td{border-bottom:none}
                          <td style="background-color: #f0f0f0;"></td>
                         <td><input type="number" id="c-oth-royal" value="0.25" oninput="calculateDetailedCost()"></td>
                     </tr>
+<tr>
+    <td>특근 (Expatriate)</td>
+    <td><input type="number" id="c-oth-exp" value="0.14" oninput="calculateDetailedCost()"></td>
+<td style="background-color: #f0f0f0;"></td>
+    </tr>
+<tr>
+    <td>Expandable Package</td>
+    <td style="background-color: #f0f0f0;"></td>
+    <td><input type="number" id="c-oth-exppkg" value="0.00" oninput="calculateDetailedCost()"></td>
+</tr>
+<tr>
+    <td>ED&D</td>
+    <td style="background-color: #f0f0f0;"></td>
+    <td><input type="number" id="c-oth-edd" value="0.00" oninput="calculateDetailedCost()"></td>
+</tr>
                      <tr class="total">
                         <th colspan="2">총원가 (TOTAL COST)</th>
                         <td id="total-cost-dir">6.86</td>
@@ -1298,7 +1328,7 @@ tr:last-child td{border-bottom:none}
 
 
 <script>
-const PAGE_TITLES={dashboard:'Overview',rfqlist:'RFQ 목록',rfqdetail:'RFQ 목록',kanban:'진행 보드',rfqnew:'RFQ 등록',analytics:'수주 분석',cumulative:'누적 수주 현황',customers:'고객사 관리', admins:'담당자 관리',quote:'견적 작성'};
+const PAGE_TITLES={dashboard:'Overview',rfqlist:'견적 목록',rfqdetail:'견적 목록',kanban:'진행 보드',rfqnew:'견적 등록',analytics:'수주 분석',cumulative:'누적 수주 현황',customers:'고객사 관리', admins:'담당자 관리',quote:'견적 작성'};
 const NAV_MAP={dashboard:'n-dashboard',rfqlist:'n-rfqlist',rfqdetail:'n-rfqlist',kanban:'n-kanban',rfqnew:'n-rfqnew',analytics:'n-analytics',cumulative:'n-cumulative',customers:'n-customers', admins:'n-admins'};
 
 function nav(page,el){
@@ -1310,7 +1340,7 @@ function nav(page,el){
   const t=document.getElementById('page-title');
   if(page==='rfqdetail'){
     const id=document.getElementById('d-rfqid').textContent;
-    t.innerHTML='<span class="bc" style="cursor:pointer" onclick="navToList()">RFQ 목록</span><span class="bcsep"> › </span>'+id;
+    t.innerHTML=`<span class="bc" style="cursor:pointer" onclick="navToList()">견적 목록</span><span class="bcsep"> › </span>${id}`;
   } else {
     t.textContent=PAGE_TITLES[page]||page;
   }
@@ -1370,26 +1400,31 @@ function goStep(n){
   if(n===2) onNewStatus(document.getElementById('new-status').value);
 }
 
-const LINE_OPTS=['A/C','B/H','I/C','저압외','D/S','B/S','G/R','기타'];
+const LINE_OPTS=['B/H','A/C','I/C','저압외','D/S','B/S','G/R','W/S기타'];
 const IS_NUM='width:100%;padding:2px 4px;border:1px solid #ddd;border-radius:4px;font-size:11px;background:#fff;color:#1a1a1a;font-family:inherit;text-align:right';
 
-function fmtNum(v){ const n=parseFloat(String(v).replace(/,/g,'')); if(isNaN(n)) return v; return n.toLocaleString('ko-KR');}
+function fmtNum(v, p=2){ const n=parseFloat(String(v).replace(/,/g,'')); if(isNaN(n)) return v; return n.toLocaleString('ko-KR', {minimumFractionDigits: p, maximumFractionDigits: p});}
 function onNumBlur(el){ const n=parseFloat(String(el.value).replace(/,/g,'')); if(!isNaN(n)) el.value=n.toLocaleString('ko-KR'); calcSum(); }
 
 function makeRow(uuid){
   const opts=LINE_OPTS.map(l=>`<option>${l}</option>`).join('');
-  const numCell=(name)=>`<td><input name="${name}" style="${IS_NUM}" placeholder="-" oninput="calcSum(this)" onblur="onNumBlur(this)"></td>`;
+  const numCell=(name)=>`<td><input name="${name}" style="${IS_NUM}" placeholder="-" oninput="calcSum()" onblur="onNumBlur(this)"></td>`;
   const tr=document.createElement('tr');
   tr.setAttribute('data-row-id', uuid);
   tr.innerHTML=`
     <td><input name="pn" style="width:100%; font-size:11px;"></td>
     <td><input name="p-name" style="width:100%; font-size:11px;"></td>
-    <td><input name="usage" type="number" value="1" style="${IS_NUM}"></td>
+    <td><input name="usage" type="number" value="1" style="${IS_NUM}" oninput="calcSum()"></td>
     <td><select name="line" style="width:100%; font-size:11px;">${opts}</select></td>
     ${numCell('y0_vol')} ${numCell('y1_vol')} ${numCell('y2_vol')} ${numCell('y3_vol')} ${numCell('y4_vol')} ${numCell('y5_vol')}
-    <td><input name="cost" style="${IS_NUM}" onblur="onNumBlur(this)"></td>
-    <td><input name="price" style="${IS_NUM}" onblur="onNumBlur(this)"></td>
-    <td><button class="btn btn-sm" onclick="openCostModal('${uuid}')">상세 입력</button></td>
+    <td><input name="cost" style="${IS_NUM}" oninput="calcSum()" onblur="onNumBlur(this)"></td>
+    ${numCell('price_y0')}
+    ${numCell('price_y1')}
+    ${numCell('price_y2')}
+    ${numCell('price_y3')}
+    ${numCell('price_y4')}
+    ${numCell('price_y5')}
+    <td><button class="btn btn-sm" onclick="openCostModal('${uuid}')">상세 원가</button></td>
     `;
   return tr;
 }
@@ -1400,24 +1435,57 @@ function addRow(){
     if(tb) tb.appendChild(makeRow(uuid));
 }
 
-function calcSum(){
-  const rows=document.querySelectorAll('#quote-tbody tr');
-  let tS=0,tP=0;
-  rows.forEach(row=>{
-    const getVal = (name) => +(row.querySelector(`[name=${name}]`)?.value.replace(/,/g,'') || 0);
-    const cost = getVal('cost');
-    const price = getVal('price');
-    
-    for(let y=0;y<6;y++){
-      const q = getVal(`y${y}_vol`);
-      tS += q*price; tP += q*(price-cost);
+function calcSum(el){
+  const rateEl = document.getElementById('q-rate');
+  const rate = parseFloat(rateEl.value.replace(/,/g, '')) || 1;
+  const currency = document.getElementById('q-currency').value;
+  
+  const rows = document.querySelectorAll('#quote-tbody tr');
+  let y0_sales = 0;
+  let y0_cost = 0;
+  let total_sales = 0;
+  let total_cost = 0;
+
+  rows.forEach(row => {
+    const getVal = (name) => parseFloat(row.querySelector(`[name=${name}]`)?.value.replace(/,/g, '') || 0) || 0;
+    const usage = getVal('usage');
+    const item_cost_curr = getVal('cost'); // 원가 in selected currency
+    const item_cost_krw = item_cost_curr * (currency === 'KRW' ? 1 : rate);
+
+    const y0_vol = getVal('y0_vol');
+    const y0_price_curr = getVal('price_y0');
+    const y0_price_krw = y0_price_curr * (currency === 'KRW' ? 1 : rate);
+    y0_sales += y0_vol * y0_price_krw * usage;
+    y0_cost += y0_vol * item_cost_krw * usage;
+
+    for (let y = 0; y < 6; y++) {
+      const vol = getVal(`y${y}_vol`);
+      const price_curr = getVal(`price_y${y}`);
+      const price_krw = price_curr * (currency === 'KRW' ? 1 : rate);
+      total_sales += vol * price_krw * usage;
+      total_cost += vol * item_cost_krw * usage;
     }
   });
-  document.getElementById('c-sales').textContent=tS?(tS/1e8).toFixed(1):'—';
-  document.getElementById('c-profit').textContent=tP?(tP/1e8).toFixed(1):'—';
+
+  const y0_profit = y0_sales - y0_cost;
+  const initial_margin = y0_sales > 0 ? (y0_profit / y0_sales * 100).toFixed(1) + '%' : '—';
+  
+  const total_profit = total_sales - total_cost;
+  const avg_margin = total_sales > 0 ? (total_profit / total_sales * 100).toFixed(1) + '%' : '—';
+  
+  const y0_sales_krw_text = y0_sales ? (y0_sales / 1e8).toFixed(1) : '—';
+  const total_sales_krw_text = total_sales ? (total_sales / 1e8).toFixed(1) : '—';
+  
+  const y0_sales_curr_text = (y0_sales && rate) ? fmtNum(y0_sales / rate, 0) : '—';
+  const total_sales_curr_text = (total_sales && rate) ? fmtNum(total_sales / rate, 0) : '—';
+
+  document.getElementById('c-y0-sales').innerHTML = `${y0_sales_krw_text}<span style="font-size:12px; color:var(--text3);"> / ${y0_sales_curr_text}</span>`;
+  document.getElementById('c-total-sales').innerHTML = `${total_sales_krw_text}<span style="font-size:12px; color:var(--text3);"> / ${total_sales_curr_text}</span>`;
+  document.getElementById('c-initial-margin').textContent = initial_margin;
+  document.getElementById('c-avg-margin').textContent = avg_margin;
 }
 
-function submitRfq(){ alert('RFQ 등록 완료!\nRFQ 번호: 2026-03-31-2-1 (자동 채번)'); navToList(); }
+function submitRfq(){ alert('견적 등록 완료!\nRFQ 번호: 2026-03-31-2-1 (자동 채번)'); navToList(); }
 function addCompetitor(){
   const list = document.getElementById('competitor-list'); if(!list) return;
   const div = document.createElement('div'); div.style.cssText = 'display:flex;gap:6px;align-items:center';
@@ -1432,16 +1500,45 @@ function onSumsimwi(checked){
 function addInvRow(tbodyId, placeholder){
   const tb = document.getElementById(tbodyId); if(!tb) return;
   const tr = document.createElement('tr');
-  tr.innerHTML = '<td><input class="fc" placeholder="'+placeholder+'" oninput="calcInvTotal()"></td><td><input class="fc" style="width:60px"></td><td><input class="fc" placeholder="0.0" style="width:65px" oninput="calcInvTotal()"></td><td><button class="btn-ghost" style="color:var(--red)" onclick="removeInvRow(this)">✕</button></td>';
+  tr.innerHTML = `<td><input class="fc" placeholder="${placeholder}"></td><td><input class="fc" style="width:60px"></td><td><input class="fc inv-krw" placeholder="0.0" style="width:65px" oninput="calcInvTotal(this, 'foreign')"></td><td><input class="fc inv-curr" placeholder="0.0" style="width:65px" oninput="calcInvTotal(this, 'krw')"></td><td><button class="btn-ghost" style="color:var(--red)" onclick="removeInvRow(this)">✕</button></td>`;
   tb.appendChild(tr);
+  onCurrencyChange(document.getElementById('q-currency').value);
 }
 function removeInvRow(btn){ btn.closest('tr').remove(); calcInvTotal(); }
-function calcInvTotal(){
-  const sumTbody=(id)=>{ let s=0; document.querySelectorAll('#'+id+' tr').forEach(tr=>{ s+=parseFloat((tr.querySelectorAll('input')[2]?.value||'0').replace(/,/g,''))||0; }); return s; };
-  const eq=sumTbody('equip-tbody'),mo=sumTbody('mold-tbody');
-  const eqEl=document.getElementById('equip-total'),moEl=document.getElementById('mold-total'),grEl=document.getElementById('inv-grand-total');
-  if(eqEl) eqEl.textContent=eq.toFixed(1)+'억'; if(moEl) moEl.textContent=mo.toFixed(1)+'억'; if(grEl) grEl.textContent=(eq+mo).toFixed(1)+'억';
+
+function calcInvTotal(input, targetType){
+  const rateEl = document.getElementById('q-rate');
+  const rate = parseFloat(rateEl.value.replace(/,/g, '')) || 1;
+  const currency = document.getElementById('q-currency').value;
+  
+  if (input) {
+      const row = input.closest('tr');
+      const krwInput = row.querySelector('.inv-krw');
+      const currInput = row.querySelector('.inv-curr');
+      const value = parseFloat(input.value) || 0;
+      
+      if (targetType === 'foreign') { // KRW input changed, update foreign
+          currInput.value = (value * 1e8 / (currency === 'KRW' ? 1 : rate)).toFixed(2);
+      } else { // Foreign input changed, update KRW
+          krwInput.value = (value * (currency === 'KRW' ? 1 : rate) / 1e8).toFixed(2);
+      }
+  }
+
+  const sumTbody=(cls)=>{ let s=0; document.querySelectorAll('.'+cls).forEach(inp=>{ s+=parseFloat((inp.value||'0').replace(/,/g,''))||0; }); return s; };
+  
+  const eqKrw=sumTbody('equip-tbody .inv-krw');
+  const moKrw=sumTbody('mold-tbody .inv-krw');
+  const eqCurr=sumTbody('equip-tbody .inv-curr');
+  const moCurr=sumTbody('mold-tbody .inv-curr');
+
+  const currSymbol = document.getElementById('q-currency').selectedOptions[0].dataset.symbol;
+
+  document.getElementById('equip-total').innerHTML = `${eqKrw.toFixed(1)}억 <span style="font-size:11px; color:var(--text3);">/ ${fmtNum(eqCurr, 2)} ${currSymbol}</span>`;
+  document.getElementById('mold-total').innerHTML = `${moKrw.toFixed(1)}억 <span style="font-size:11px; color:var(--text3);">/ ${fmtNum(moCurr, 2)} ${currSymbol}</span>`;
+  document.getElementById('inv-grand-total').innerHTML = `${(eqKrw+moKrw).toFixed(1)}억 <span style="font-size:12px; color:var(--text3);">/ ${fmtNum(eqCurr+moCurr, 2)} ${currSymbol}</span>`;
 }
+
+
 function calcLTA(){
   const baseEl=document.getElementById('lta-base'),sopEl=document.getElementById('lta-sop'),tbody=document.getElementById('lta-tbody'),rateEl=document.getElementById('lta-rate'),yearsEl=document.getElementById('lta-years');
   if(!baseEl||!tbody) return;
@@ -1468,23 +1565,45 @@ function addLumpsum(){
 function removeLumpsum(btn){ btn.closest('.lumpsum-item').remove(); }
 function navToList(){ nav('rfqlist',null); }
 function onCurrencyChange(val){
-  const wrap=document.getElementById('exchange-rate-wrap'),note=document.getElementById('currency-note'),cu=document.getElementById('hd-cost-unit'),pu=document.getElementById('hd-price-unit');
-  if(wrap) wrap.style.display=val==='KRW'?'none':'flex'; const unit=val==='KRW'?'(원)':'('+val+')';
-  if(cu) cu.textContent=unit; if(pu) pu.textContent=unit;
-  if(note) note.textContent='수량: 대/년 | 원가·판가: '+val+(val==='KRW'?' (천단위 콤마)':' — 환율 입력 후 원화 환산 가능');
+  const wrap=document.getElementById('exchange-rate-wrap');
+  const rateInput = document.getElementById('q-rate');
+  const rateUnit = document.getElementById('q-rate-unit');
+  const selOpt = document.querySelector(`#q-currency option[value="${val}"]`);
+  const symbol = selOpt.dataset.symbol;
+
+  if (val === 'KRW') {
+    rateInput.value = '1';
+    rateInput.readOnly = true;
+    rateInput.style.background = '#f0f0f0';
+    wrap.style.display = 'none';
+  } else {
+    rateInput.readOnly = false;
+    rateInput.style.background = '#fff';
+    wrap.style.display = 'flex';
+    rateUnit.textContent = `원 / 1 ${symbol}`;
+  }
+  
+  document.querySelectorAll('.sc-label-currency').forEach(el => el.textContent = val);
+  document.querySelectorAll('.inv-th-curr').forEach(el => el.textContent = `금액(${val})`);
+  
+  // Update investment table foreign values
+  document.querySelectorAll('.inv-tbl .inv-krw').forEach(input => calcInvTotal(input, 'foreign'));
+  
+  calcSum();
+  calcInvTotal();
 }
 function openQuoteFromList(rfqId){
-  const data={'2026-03-31-1-1':{company:'HMG 울산', model:'NQ7', line:'저압', chasu:'1차'},'2026-03-28-2-1':{company:'HMG 화성', model:'CV2', line:'고압', chasu:'2차'},'2026-03-25-1-2':{company:'BMW', model:'G26', line:'A/C', chasu:'1차'},'2026-03-20-1-1':{company:'HMG 울산', model:'OS', line:'저압', chasu:'1차'},'2026-03-15-3-1':{company:'GM', model:'9BXX', line:'W/S', chasu:'3차'},};
+  const data={'2026-03-31-1-1':{company:'HMG 울산', model:'NQ7', line:'저압외', chasu:'1차'},'2026-03-28-2-1':{company:'HMG 화성', model:'CV2', line:'고압', chasu:'2차'},'2026-03-25-1-2':{company:'BMW', model:'G26', line:'A/C', chasu:'1차'},'2026-03-20-1-1':{company:'HMG 울산', model:'OS', line:'저압외', chasu:'1차'},'2026-03-15-3-1':{company:'GM', model:'9BXX', line:'W/S', chasu:'3차'},};
   const info=data[rfqId]||{company:'(신규)',model:'',line:'',chasu:'1차'};
   const currentChasuNum=parseInt(info.chasu.replace('차',''))||0,nextChasu=(currentChasuNum+1)+'차';
-  document.getElementById('page-title').innerHTML='<span class="bc" onclick="navToList()">RFQ 목록</span><span class="bcsep">›</span>'+rfqId+'<span style="font-weight:400"> | ' + nextChasu + ' 견적 작성</span>';
+  document.getElementById('page-title').innerHTML=`<span class="bc" onclick="navToList()">견적 목록</span><span class="bcsep">›</span>${rfqId}<span style="font-weight:400"> | ${nextChasu} 견적 작성</span>`;
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-rfqnew').classList.add('active');
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   document.getElementById('n-rfqnew').classList.add('active');
   goStep(2);
   const banner=document.getElementById('quote-info-banner');
-  if(banner){banner.innerHTML='<strong>'+rfqId+'</strong> &nbsp;'+info.company+' / '+info.model+' '+info.line+' &nbsp;<span class="badge b-gray">'+info.chasu+'</span> → <span class="badge b-blue">'+nextChasu+'</span> &nbsp;<span style="font-size:11px;color:var(--text3)">기존 정보가 로드되었습니다.</span>'; banner.style.display='flex';}
+  if(banner){banner.innerHTML=`<strong>${rfqId}</strong> &nbsp;${info.company} / ${info.model} ${info.line} &nbsp;<span class="badge b-gray">${info.chasu}</span> → <span class="badge b-blue">${nextChasu}</span> &nbsp;<span style="font-size:11px;color:var(--text3)">기존 정보가 로드되었습니다.</span>`; banner.style.display='flex';}
 }
 
 /* ── 담당자 관리 ── */
@@ -1603,6 +1722,7 @@ function saveDetailedCost(){
         mainRow.querySelector('[name="cost"]').value = totalCost.toFixed(2);
     }
     closeCostModal();
+    calcSum();
 }
 
 function getNum(id){ return parseFloat(document.getElementById(id).value) || 0; }
@@ -1611,9 +1731,10 @@ function calculateDetailedCost(){
     const c = {
         matDir: getNum('c-mat-dir'), labDir: getNum('c-lab-dir'), labInd: getNum('c-lab-ind'),
         ovhDir: getNum('c-ovh-dir'), ovhInd: getNum('c-ovh-ind'),
-        sgaMM: getNum('c-sga-mm'), sgaInd: getNum('c-sga-ind'), sgaRes: getNum('c-sga-res'), sgaExp: getNum('c-sga-exp'),
+        sgaMM: getNum('c-sga-mm'), sgaInd: getNum('c-sga-ind'), sgaRes: getNum('c-sga-res'), 
         othFg: getNum('c-oth-fg'), othBldg: getNum('c-oth-bldg'), othIndw: getNum('c-oth-indw'),
         othMold: getNum('c-oth-mold'), othProf: getNum('c-oth-prof'), othRoyal: getNum('c-oth-royal'),
+        othExp: getNum('c-oth-exp'), othExpPkg: getNum('c-oth-exppkg'), othEdd: getNum('c-oth-edd')
     };
     const mfgCostDir = c.matDir + c.labDir + c.ovhDir;
     const mfgCostInd = c.labInd + c.ovhInd;
@@ -1623,8 +1744,8 @@ function calculateDetailedCost(){
     document.getElementById('mfg-cost-ind').textContent = mfgCostInd.toFixed(2);
     document.getElementById('mfg-cost-total').textContent = mfgCostTotal.toFixed(2);
     
-    const totalCostDir = mfgCostDir + c.sgaMM + c.sgaRes + c.sgaExp + c.othFg;
-    const totalCostInd = mfgCostInd + c.sgaInd + c.othBldg + c.othIndw + c.othMold + c.othProf + c.othRoyal;
+    const totalCostDir = mfgCostDir + c.sgaMM + c.sgaRes + c.othFg + c.othExp;
+    const totalCostInd = mfgCostInd + c.sgaInd + c.othBldg + c.othIndw + c.othMold + c.othProf + c.othRoyal + c.othExpPkg + c.othEdd;
     const grandTotal = totalCostDir + totalCostInd;
     
     document.getElementById('total-cost-dir').textContent = totalCostDir.toFixed(2);
@@ -1637,7 +1758,7 @@ function calculateDetailedCost(){
 document.addEventListener('DOMContentLoaded', ()=>{
     onProgressStatus('진행중');
     onNewStatus('진행중');
-    initRows();
+    onCurrencyChange('KRW');
     addRow();
     calcLTA();
     calcInvTotal();
