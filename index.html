@@ -1047,15 +1047,14 @@ tr:last-child td{border-bottom:none}
           </div>
         </div>
         <div style="overflow-x:auto">
-          <table style="min-width:1300px;border-collapse:collapse;table-layout:fixed">
-            <colgroup><col style="width:120px"/><col style="width:140px"/><col style="width:50px"/><col style="width:95px"/><col style="width:56px"/><col style="width:56px"/><col style="width:56px"/><col style="width:56px"/><col style="width:56px"/><col style="width:56px"/><col style="width:80px"/><col style="width:80px"/><col style="width:80px"/><col style="width:80px"/><col style="width:80px"/><col style="width:80px"/><col style="width:80px"/><col style="width:90px"/>
+          <table style="min-width:700px;border-collapse:collapse;table-layout:fixed">
+            <colgroup><col style="width:120px"/><col style="width:140px"/><col style="width:50px"/><col style="width:95px"/><col style="width:100px"/><col style="width:90px"/><col style="width:80px"/><col style="width:110px"/><col style="width:110px"/><col style="width:90px"/>
         </colgroup>
             <thead>
     <tr>
         <th>품번</th><th>품명</th><th>U/S</th><th>라인</th>
-        <th>Y0 수량</th><th>Y1 수량</th><th>Y2 수량</th><th>Y3 수량</th><th>Y4 수량</th><th>Y5 수량</th>
-        <th>원가</th><th>Y0 판가</th><th>Y1 판가</th><th>Y2 판가</th>
-        <th>Y3 판가</th><th>Y4 판가</th><th>Y5 판가</th><th></th>
+        <th>수량 기준</th><th>판가 기준</th>
+        <th>원가</th>
     </tr>
     </thead>
             <tbody id="quote-tbody"></tbody>
@@ -1193,7 +1192,99 @@ tr:last-child td{border-bottom:none}
   </div><!-- /content -->
 </div><!-- /app -->
 
-<!-- 상세 원가 입력 Modal -->
+<!-- 상세 수량 입력 Modal -->
+<div class="modal-overlay" id="vol-modal">
+  <div class="modal-content" style="max-width:520px">
+    <div class="modal-header">
+      <h2 class="modal-title" id="vol-modal-title">수량 입력</h2>
+      <button class="modal-close" onclick="closeVolModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--blue-lt);border:1px solid #B5D4F4;border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:var(--blue-dk)">
+        <strong>기준수량</strong>은 Y0 수량이 메인 테이블에 표시됩니다. Y0~Y5를 각각 입력하세요.
+      </div>
+      <table class="cost-table" style="width:100%">
+        <thead>
+          <tr><th style="width:100px">연도</th><th>수량 (대/연)</th><th style="width:120px">비고</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="font-weight:600;color:var(--blue-dk)">기준수량 (Y0)</td><td><input type="number" id="vm-y0" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note0" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td>Y1</td><td><input type="number" id="vm-y1" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note1" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td>Y2</td><td><input type="number" id="vm-y2" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note2" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td>Y3</td><td><input type="number" id="vm-y3" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note3" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td>Y4</td><td><input type="number" id="vm-y4" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note4" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td>Y5</td><td><input type="number" id="vm-y5" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note5" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr class="total"><td colspan="1" style="font-weight:700">총 누적수량</td><td id="vm-total" style="font-weight:700;color:var(--blue-dk)">0</td><td></td></tr>
+        </tbody>
+      </table>
+      <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px">
+        <button class="btn btn-sm" onclick="closeVolModal()">취소</button>
+        <button class="btn btn-sm btn-p" onclick="saveVolModal()">저장</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 상세 판가 입력 Modal (LTA 연동) -->
+<div class="modal-overlay" id="price-modal">
+  <div class="modal-content" style="max-width:620px">
+    <div class="modal-header">
+      <h2 class="modal-title" id="price-modal-title">판가 입력 (LTA 연동)</h2>
+      <button class="modal-close" onclick="closePriceModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <!-- LTA 조건 입력 -->
+      <div style="background:#EEEDFE;border:1px solid #AFA9EC;border-radius:8px;padding:14px;margin-bottom:16px">
+        <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:12px;display:flex;align-items:center;gap:6px">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 1L9.8 6H15l-4.1 3 1.6 5L8 11l-4.5 3 1.6-5L1 6h5.2z" stroke="#3C3489" stroke-width="1.3"/></svg>
+          약정 단가 인하 조건 (LTA) 설정
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px">
+          <div>
+            <div style="font-size:11px;color:var(--purple);opacity:.8;margin-bottom:4px;font-weight:600">기준 판가 (Y0)</div>
+            <input type="number" id="pm-base" placeholder="예: 15000" style="width:100%;padding:7px 10px;border:1px solid #AFA9EC;border-radius:7px;font-size:14px;font-weight:700;color:var(--purple);background:#fff" oninput="calcPriceModal()">
+          </div>
+          <div>
+            <div style="font-size:11px;color:var(--purple);opacity:.8;margin-bottom:4px;font-weight:600">연간 인하율 (%)</div>
+            <input type="number" id="pm-rate" value="3" min="0" max="30" step="0.1" style="width:100%;padding:7px 10px;border:1px solid #AFA9EC;border-radius:7px;font-size:14px;font-weight:700;color:var(--red);text-align:center;background:#fff" oninput="calcPriceModal()">
+          </div>
+          <div>
+            <div style="font-size:11px;color:var(--purple);opacity:.8;margin-bottom:4px;font-weight:600">인하 적용 기간 (Y)</div>
+            <select id="pm-years" style="width:100%;padding:7px 10px;border:1px solid #AFA9EC;border-radius:7px;font-size:13px;background:#fff;color:var(--text)" onchange="calcPriceModal()">
+              <option value="5" selected>Y0~Y5 (5년)</option>
+              <option value="4">Y0~Y4 (4년)</option>
+              <option value="3">Y0~Y3 (3년)</option>
+              <option value="2">Y0~Y2 (2년)</option>
+              <option value="1">Y0~Y1 (1년)</option>
+            </select>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--purple);opacity:.7;margin-bottom:4px">인하 조건 없이 수동 입력도 가능합니다 — 아래 표에서 직접 수정하세요.</div>
+      </div>
+
+      <!-- 연도별 판가 자동계산 결과 -->
+      <table class="cost-table" style="width:100%">
+        <thead>
+          <tr><th style="width:80px">연도</th><th>적용 판가</th><th style="width:100px">전년比 인하율</th><th style="width:120px">비고/조건</th></tr>
+        </thead>
+        <tbody id="pm-tbody">
+          <tr><td style="font-weight:600;color:var(--blue-dk)">Y0</td><td><input type="number" id="pm-p0" placeholder="0" oninput="calcSum()"></td><td id="pm-r0" style="color:var(--text3)">—</td><td><input id="pm-n0" placeholder="기준가" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td>Y1</td><td><input type="number" id="pm-p1" placeholder="0" oninput="calcSum()"></td><td id="pm-r1" style="color:var(--red)">—</td><td><input id="pm-n1" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td>Y2</td><td><input type="number" id="pm-p2" placeholder="0" oninput="calcSum()"></td><td id="pm-r2" style="color:var(--red)">—</td><td><input id="pm-n2" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td>Y3</td><td><input type="number" id="pm-p3" placeholder="0" oninput="calcSum()"></td><td id="pm-r3" style="color:var(--red)">—</td><td><input id="pm-n3" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td>Y4</td><td><input type="number" id="pm-p4" placeholder="0" oninput="calcSum()"></td><td id="pm-r4" style="color:var(--red)">—</td><td><input id="pm-n4" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td>Y5</td><td><input type="number" id="pm-p5" placeholder="0" oninput="calcSum()"></td><td id="pm-r5" style="color:var(--red)">—</td><td><input id="pm-n5" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+        </tbody>
+      </table>
+      <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px">
+        <button class="btn btn-sm" onclick="closePriceModal()">취소</button>
+        <button class="btn btn-sm btn-p" onclick="savePriceModal()">저장</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="modal-overlay" id="cost-modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -1408,7 +1499,9 @@ function onNumBlur(el){ const n=parseFloat(String(el.value).replace(/,/g,'')); i
 
 function makeRow(uuid){
   const opts=LINE_OPTS.map(l=>`<option>${l}</option>`).join('');
-  const numCell=(name)=>`<td><input name="${name}" style="${IS_NUM}" placeholder="-" oninput="calcSum()" onblur="onNumBlur(this)"></td>`;
+  // Hidden inputs for Y0-Y5 volumes and prices
+  const hiddenVols = [0,1,2,3,4,5].map(y=>`<input type="hidden" name="y${y}_vol" value="0">`).join('');
+  const hiddenPrices = [0,1,2,3,4,5].map(y=>`<input type="hidden" name="price_y${y}" value="0">`).join('');
   const tr=document.createElement('tr');
   tr.setAttribute('data-row-id', uuid);
   tr.innerHTML=`
@@ -1416,15 +1509,22 @@ function makeRow(uuid){
     <td><input name="p-name" style="width:100%; font-size:11px;"></td>
     <td><input name="usage" type="number" value="1" style="${IS_NUM}" oninput="calcSum()"></td>
     <td><select name="line" style="width:100%; font-size:11px;">${opts}</select></td>
-    ${numCell('y0_vol')} ${numCell('y1_vol')} ${numCell('y2_vol')} ${numCell('y3_vol')} ${numCell('y4_vol')} ${numCell('y5_vol')}
+    <td style="text-align:center">
+      <span name="base_vol_display" style="font-size:12px;font-weight:600;color:var(--blue)">—</span>
+      ${hiddenVols}
+    </td>
+    <td style="text-align:center">
+      <span name="base_price_display" style="font-size:12px;font-weight:600;color:var(--blue)">—</span>
+      ${hiddenPrices}
+    </td>
     <td><input name="cost" style="${IS_NUM}" oninput="calcSum()" onblur="onNumBlur(this)"></td>
-    ${numCell('price_y0')}
-    ${numCell('price_y1')}
-    ${numCell('price_y2')}
-    ${numCell('price_y3')}
-    ${numCell('price_y4')}
-    ${numCell('price_y5')}
-    <td><button class="btn btn-sm" onclick="openCostModal('${uuid}')">상세 원가</button></td>
+    <td style="text-align:center">
+      <button class="btn btn-sm" style="font-size:11px;background:var(--blue-lt);color:var(--blue-dk);border-color:var(--blue)" onclick="openVolModal('${uuid}')">수량 상세</button>
+    </td>
+    <td style="text-align:center">
+      <button class="btn btn-sm" style="font-size:11px;background:var(--purple-lt);color:var(--purple);border-color:#AFA9EC" onclick="openPriceModal('${uuid}')">판가 상세</button>
+    </td>
+    <td><button class="btn btn-sm" onclick="openCostModal('${uuid}')">원가 상세</button></td>
     `;
   return tr;
 }
@@ -1754,7 +1854,135 @@ function calculateDetailedCost(){
 }
 
 
-// 최초 로드 시 초기화
+
+/* ── 상세 수량 Modal ── */
+let activeVolRowId = null;
+
+function openVolModal(rowId) {
+  activeVolRowId = rowId;
+  const mainRow = document.querySelector(`tr[data-row-id="${rowId}"]`);
+  const pn = mainRow.querySelector('[name="pn"]').value;
+  document.getElementById('vol-modal-title').textContent = `수량 입력 — 품번: ${pn || '(미입력)'}`;
+  // Load existing values
+  for (let y = 0; y <= 5; y++) {
+    const val = mainRow.querySelector(`[name="y${y}_vol"]`).value;
+    document.getElementById(`vm-y${y}`).value = val && val !== '0' ? val : '';
+  }
+  onVolInput();
+  document.getElementById('vol-modal').classList.add('active');
+}
+
+function closeVolModal() {
+  document.getElementById('vol-modal').classList.remove('active');
+  activeVolRowId = null;
+}
+
+function onVolInput() {
+  let total = 0;
+  for (let y = 0; y <= 5; y++) {
+    total += parseFloat(document.getElementById(`vm-y${y}`).value) || 0;
+  }
+  document.getElementById('vm-total').textContent = total.toLocaleString('ko-KR');
+}
+
+function saveVolModal() {
+  const mainRow = document.querySelector(`tr[data-row-id="${activeVolRowId}"]`);
+  if (!mainRow) return;
+  for (let y = 0; y <= 5; y++) {
+    const val = parseFloat(document.getElementById(`vm-y${y}`).value) || 0;
+    mainRow.querySelector(`[name="y${y}_vol"]`).value = val;
+  }
+  // Display base quantity (Y0) in the main table
+  const y0val = parseFloat(document.getElementById('vm-y0').value) || 0;
+  const displayEl = mainRow.querySelector('[name="base_vol_display"]');
+  if (displayEl) displayEl.textContent = y0val ? y0val.toLocaleString('ko-KR') : '—';
+  closeVolModal();
+  calcSum();
+}
+
+/* ── 상세 판가 Modal (LTA 연동) ── */
+let activePriceRowId = null;
+
+function openPriceModal(rowId) {
+  activePriceRowId = rowId;
+  const mainRow = document.querySelector(`tr[data-row-id="${rowId}"]`);
+  const pn = mainRow.querySelector('[name="pn"]').value;
+  document.getElementById('price-modal-title').textContent = `판가 입력 (LTA 연동) — 품번: ${pn || '(미입력)'}`;
+  // Load existing prices
+  for (let y = 0; y <= 5; y++) {
+    const val = mainRow.querySelector(`[name="price_y${y}"]`).value;
+    document.getElementById(`pm-p${y}`).value = val && val !== '0' ? val : '';
+  }
+  // Reset LTA fields to defaults
+  document.getElementById('pm-base').value = '';
+  document.getElementById('pm-rate').value = '3';
+  document.getElementById('pm-years').value = '5';
+  // If Y0 price already exists, pre-fill base
+  const existY0 = mainRow.querySelector('[name="price_y0"]').value;
+  if (existY0 && existY0 !== '0') {
+    document.getElementById('pm-base').value = existY0;
+    calcPriceModal();
+  } else {
+    // Just reset rate labels
+    for (let y = 0; y <= 5; y++) {
+      document.getElementById(`pm-r${y}`).textContent = y === 0 ? '—' : '—';
+    }
+  }
+  document.getElementById('price-modal').classList.add('active');
+}
+
+function closePriceModal() {
+  document.getElementById('price-modal').classList.remove('active');
+  activePriceRowId = null;
+}
+
+function calcPriceModal() {
+  const base = parseFloat(document.getElementById('pm-base').value) || 0;
+  const rate = parseFloat(document.getElementById('pm-rate').value) || 0;
+  const years = parseInt(document.getElementById('pm-years').value) || 5;
+  if (!base) return;
+  let cur = base;
+  for (let y = 0; y <= 5; y++) {
+    let price;
+    if (y === 0) {
+      price = base;
+    } else if (y <= years) {
+      price = Math.round(cur * (1 - rate / 100));
+    } else {
+      price = Math.round(cur); // no further reduction
+    }
+    document.getElementById(`pm-p${y}`).value = price;
+    const rateEl = document.getElementById(`pm-r${y}`);
+    if (y === 0) {
+      rateEl.textContent = '기준';
+      rateEl.style.color = 'var(--text2)';
+    } else if (y <= years) {
+      rateEl.textContent = `-${rate.toFixed(1)}%`;
+      rateEl.style.color = 'var(--red)';
+    } else {
+      rateEl.textContent = '동결';
+      rateEl.style.color = 'var(--text3)';
+    }
+    if (y > 0 && y <= years) cur = price;
+  }
+}
+
+function savePriceModal() {
+  const mainRow = document.querySelector(`tr[data-row-id="${activePriceRowId}"]`);
+  if (!mainRow) return;
+  for (let y = 0; y <= 5; y++) {
+    const val = parseFloat(document.getElementById(`pm-p${y}`).value) || 0;
+    mainRow.querySelector(`[name="price_y${y}"]`).value = val;
+  }
+  // Display Y0 price in the main table
+  const y0price = parseFloat(document.getElementById('pm-p0').value) || 0;
+  const displayEl = mainRow.querySelector('[name="base_price_display"]');
+  if (displayEl) displayEl.textContent = y0price ? y0price.toLocaleString('ko-KR') : '—';
+  closePriceModal();
+  calcSum();
+}
+
+
 document.addEventListener('DOMContentLoaded', ()=>{
     onProgressStatus('진행중');
     onNewStatus('진행중');
