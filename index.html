@@ -4,39 +4,57 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900견적 버전&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f4f5f7;color:#1a1a1a;font-size:14px}
-:root{--blue:#185FA5;--blue-lt:#E6F1FB;--blue-dk:#0C447C;--green:#3B6D11;--green-lt:#EAF3DE;--amber:#BA7517;--amber-lt:#FAEEDA;--red:#A32D2D;--red-lt:#FCEBEB;--gray:#5F5E5A;--gray-lt:#F1EFE8;--purple:#3C3489;--purple-lt:#EEEDFE;--teal:#085041;--teal-lt:#E1F5EE;--border:#e0e0e0;--border2:#cacaca;--bg:#f4f5f7;--surface:#fff;--surface2:#f8f8f6;--text:#1a1a1a;--text2:#5a5a5a;--text3:#999}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Malgun Gothic',sans-serif;background:#f0f2f5;color:#1a1a1a;font-size:14px}
+:root{
+  --blue:#1565C0;--blue-lt:#E3F0FF;--blue-dk:#0D47A1;
+  --green:#2E7D32;--green-lt:#E8F5E9;
+  --amber:#E65100;--amber-lt:#FFF3E0;
+  --red:#C62828;--red-lt:#FFEBEE;
+  --gray:#546E7A;--gray-lt:#ECEFF1;
+  --purple:#4527A0;--purple-lt:#EDE7F6;
+  --teal:#00695C;--teal-lt:#E0F2F1;
+  --border:#E0E4EA;--border2:#C5CBD6;
+  --bg:#F0F2F5;--surface:#fff;--surface2:#F7F8FA;
+  --text:#1a1a1a;--text2:#4A5568;--text3:#9AA5B4;
+  --shadow:0 1px 3px rgba(0,0,0,.10),0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);
+}
 
+/* ── Layout ── */
 .app{display:flex;height:100vh;overflow:hidden}
-.sidebar{width:210px;flex-shrink:0;background:#fff;border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto}
-.logo{padding:16px;border-bottom:1px solid var(--border)}
-.logo-text{font-size:15px;font-weight:600}
-.logo-sub{font-size:11px;color:var(--text3);margin-top:2px}
-.nav-sec{font-size:10px;color:var(--text3);padding:14px 16px 4px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
-.nav-item{display:flex;align-items:center;gap:9px;padding:8px 16px;cursor:pointer;font-size:13px;color:var(--text2);transition:background .1s;border-left:2px solid transparent}
-.nav-item:hover{background:var(--bg);color:var(--text)}
-.nav-item.active{background:#EEF5FC;color:var(--blue-dk);font-weight:600;border-left-color:var(--blue)}
-.ni{width:15px;height:15px;flex-shrink:0}
 
+/* ── Sidebar ── */
+.sidebar{width:216px;flex-shrink:0;background:#0D1B2A;display:flex;flex-direction:column;overflow-y:auto}
+.logo{padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,.08)}
+.logo-text{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin-bottom:4px}
+.logo-sub{font-size:11px;color:rgba(255,255,255,.3);margin-top:2px}
+.nav-sec{font-size:10px;color:rgba(255,255,255,.35);padding:16px 16px 5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.nav-item{display:flex;align-items:center;gap:9px;padding:9px 16px;cursor:pointer;font-size:12.5px;color:rgba(255,255,255,.6);transition:all .15s;border-left:2px solid transparent;margin:1px 0}
+.nav-item:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.9)}
+.nav-item.active{background:rgba(21,101,192,.35);color:#fff;font-weight:600;border-left-color:#4FC3F7}
+.ni{width:15px;height:15px;flex-shrink:0;opacity:.7}
+.nav-item.active .ni,.nav-item:hover .ni{opacity:1}
+
+/* ── Main ── */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
-.topbar{background:#fff;border-bottom:1px solid var(--border);padding:11px 22px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.topbar-title{font-size:15px;font-weight:600;display:flex;align-items:center;gap:6px}
+.topbar{background:#fff;border-bottom:1px solid var(--border);padding:10px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;box-shadow:var(--shadow)}
+.topbar-title{font-size:15px;font-weight:700;display:flex;align-items:center;gap:6px;color:var(--blue-dk)}
 .bc{font-size:13px;color:var(--text2);font-weight:400;cursor:pointer}
 .bc:hover{color:var(--blue)}
 .bcsep{color:var(--text3);margin:0 4px}
 .topbar-right{display:flex;align-items:center;gap:10px}
 .user-chip{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text2)}
-.ava{width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0;background:var(--blue-lt);color:var(--blue-dk)}
+.ava{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;background:var(--blue);color:#fff}
 
-.content{flex:1;overflow-y:auto;padding:20px 22px}
+.content{flex:1;overflow-y:auto;padding:20px 24px}
 .page{display:none}.page.active{display:block}
 
-/* cards */
-.card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:14px}
+/* ── Cards ── */
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:16px;box-shadow:var(--shadow)}
 .card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.card-title{font-size:13px;font-weight:600}
+.card-title{font-size:13px;font-weight:700;color:var(--text);letter-spacing:.01em}
 
-/* badges */
+/* ── Badges ── */
 .badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
 .b-blue{background:var(--blue-lt);color:var(--blue-dk)}
 .b-green{background:var(--green-lt);color:var(--green)}
@@ -46,132 +64,137 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .b-purple{background:var(--purple-lt);color:var(--purple)}
 .b-teal{background:var(--teal-lt);color:var(--teal)}
 
-/* buttons */
-.btn{padding:6px 14px;border-radius:7px;border:1px solid var(--border2);background:#fff;cursor:pointer;font-size:12px;color:var(--text);transition:background .1s}
-.btn:hover{background:var(--bg)}
-.btn-p{background:var(--blue);color:#fff;border-color:var(--blue)}.btn-p:hover{background:var(--blue-dk)}
+/* ── Buttons ── */
+.btn{padding:6px 14px;border-radius:8px;border:1px solid var(--border2);background:#fff;cursor:pointer;font-size:12px;color:var(--text);transition:all .12s;font-weight:500;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.btn:hover{background:var(--bg);border-color:#aaa}
+.btn-p{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 2px 4px rgba(21,101,192,.3)}
+.btn-p:hover{background:var(--blue-dk);box-shadow:0 2px 6px rgba(21,101,192,.4)}
 .btn-sm{padding:4px 10px;font-size:11px}
 .btn-ghost{border:none;background:none;cursor:pointer;font-size:12px;color:var(--text2);padding:4px 6px}
 .btn-ghost:hover{color:var(--text)}
-.btn-back{display:flex;align-items:center;gap:4px;padding:5px 11px;border-radius:7px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:12px;color:var(--text2);margin-bottom:14px}
+.btn-back{display:flex;align-items:center;gap:4px;padding:5px 11px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:12px;color:var(--text2);margin-bottom:14px}
 .btn-back:hover{background:var(--bg)}
 
-/* form */
+/* ── Form ── */
 .fg{margin-bottom:13px}
-.fg label{display:block;font-size:11px;color:var(--text2);margin-bottom:4px;font-weight:600}
-.fc{width:100%;padding:7px 10px;border:1px solid var(--border2);border-radius:7px;background:#fff;color:var(--text);font-size:13px;font-family:inherit}
-.fc:focus{outline:none;border-color:var(--blue)}
+.fg label{display:block;font-size:11px;color:var(--text2);margin-bottom:4px;font-weight:600;letter-spacing:.02em}
+.fc{width:100%;padding:7px 10px;border:1px solid var(--border2);border-radius:8px;background:#fff;color:var(--text);font-size:13px;font-family:inherit;transition:border-color .12s,box-shadow .12s}
+.fc:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,101,192,.12)}
 textarea.fc{resize:vertical;min-height:80px;line-height:1.5}
 .fr2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .fr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
 .fr4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
 
-/* stat card */
-.sc{background:var(--surface2);border-radius:8px;padding:12px 14px}
-.sc-label{font-size:11px;color:var(--text2);margin-bottom:5px}
-.sc-val{font-size:20px;font-weight:600}
+/* ── Stat cards ── */
+.sc{background:var(--surface2);border-radius:10px;padding:14px 16px;border:1px solid var(--border)}
+.sc-label{font-size:11px;color:var(--text2);margin-bottom:6px;font-weight:500}
+.sc-val{font-size:20px;font-weight:700}
 .sc-sub{font-size:11px;color:var(--text3);margin-top:3px}
 
-/* table */
+/* ── Table ── */
 table{width:100%;border-collapse:collapse}
-th{font-size:11px;font-weight:600;color:var(--text2);padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+th{font-size:11px;font-weight:600;color:var(--text2);padding:8px 10px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap;background:var(--surface2)}
 td{padding:9px 10px;font-size:12px;border-bottom:1px solid var(--border);vertical-align:middle}
 tr:last-child td{border-bottom:none}
-.tbl-hover tr:hover td{background:var(--bg);cursor:pointer}
-.tbl-hover tr.selected td {background-color: var(--blue-lt) !important;}
+.tbl-hover tr:hover td{background:#F5F8FF;cursor:pointer}
+.tbl-hover tr.selected td{background-color:var(--blue-lt)!important}
 
+/* rfq mono */
+.rid{font-family:monospace;font-size:11px;color:var(--text2);background:var(--surface2);padding:2px 5px;border-radius:4px}
 
-/* rfq-id mono */
-.rid{font-family:monospace;font-size:11px;color:var(--text2)}
-
-/* tabs */
-.tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:16px;gap:0}
-.tab{padding:9px 16px;font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .1s}
-.tab:hover{color:var(--text)}
-.tab.active{color:var(--blue-dk);border-bottom-color:var(--blue);font-weight:600}
+/* ── Tabs ── */
+.tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:16px}
+.tab{padding:9px 16px;font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .12s}
+.tab:hover{color:var(--blue)}
+.tab.active{color:var(--blue-dk);border-bottom-color:var(--blue);font-weight:700}
 .tab-pane{display:none}.tab-pane.active{display:block}
 
-/* step bar */
-.steps{display:flex;margin-bottom:18px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.step{flex:1;padding:8px;text-align:center;font-size:12px;color:var(--text2);background:var(--surface2);cursor:pointer;border-right:1px solid var(--border)}
+/* ── Step bar ── */
+.steps{display:flex;margin-bottom:20px;border-radius:10px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)}
+.step{flex:1;padding:9px;text-align:center;font-size:12px;color:var(--text2);background:var(--surface2);cursor:pointer;border-right:1px solid var(--border);transition:all .15s}
 .step:last-child{border-right:none}
-.step.done{background:var(--blue);color:#fff}
-.step.cur{background:var(--blue-lt);color:var(--blue-dk);font-weight:600}
+.step.done{background:var(--blue);color:#fff;font-weight:600}
+.step.cur{background:var(--blue-lt);color:var(--blue-dk);font-weight:700}
 
-/* kanban */
+/* ── Kanban ── */
 .kanban{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:start}
-.kb-col{background:var(--surface2);border-radius:10px;padding:10px}
+.kb-col{background:var(--surface2);border-radius:12px;padding:12px;border:1px solid var(--border)}
 .kb-col-hd{font-size:11px;font-weight:700;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
-.kb-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:11px;margin-bottom:8px;cursor:pointer;transition:box-shadow .1s}
-.kb-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.kb-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px;cursor:pointer;transition:all .12s;box-shadow:var(--shadow)}
+.kb-card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
 .kb-id{font-size:10px;color:var(--text3);font-family:monospace;margin-bottom:4px}
-.kb-co{font-size:12px;font-weight:600;margin-bottom:3px}
+.kb-co{font-size:12px;font-weight:700;margin-bottom:3px}
 .kb-sub{font-size:11px;color:var(--text2)}
 .kb-foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
 
-/* Modal Styles */
-.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;z-index:1000;padding:40px 20px}
+/* ── Modal ── */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.55);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;z-index:1000;padding:40px 20px;backdrop-filter:blur(2px)}
 .modal-overlay.active{display:flex}
-.modal-content{background:white;padding:20px;border-radius:10px;width:100%;max-width:980px;position:relative;box-shadow:0 5px 15px rgba(0,0,0,0.3)}
-.modal-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:16px}
-.modal-title{font-size:16px;font-weight:600}
-.modal-close{font-size:24px;line-height:1;cursor:pointer;border:none;background:none;font-weight:300}
-.cost-table{width:100%;border-collapse:collapse;font-size:12px;}
-.cost-table th,.cost-table td{border:1px solid var(--border);padding:6px 8px;text-align:center;}
-.cost-table th{background:var(--surface2);font-weight:600;font-size:11px;}
-.cost-table input{width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px;text-align:right;background:#fff;}
-.cost-table input:focus{outline:1px solid var(--blue);}
-.cost-table .total{font-weight:bold;background:var(--blue-lt);color:var(--blue-dk);}
-.cost-section-title{font-size:13px;font-weight:700;margin:12px 0 6px;padding-bottom:4px;border-bottom:2px solid var(--blue);color:var(--blue-dk);}
+.modal-content{background:white;padding:24px;border-radius:14px;width:100%;max-width:980px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.20)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:14px;margin-bottom:18px}
+.modal-title{font-size:16px;font-weight:700;color:var(--text)}
+.modal-close{font-size:24px;line-height:1;cursor:pointer;border:none;background:none;font-weight:300;color:var(--text2);width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:var(--bg);color:var(--text)}
 
+/* ── Cost table ── */
+.cost-table{width:100%;border-collapse:collapse;font-size:12px}
+.cost-table th,.cost-table td{border:1px solid var(--border);padding:6px 8px;text-align:center}
+.cost-table th{background:var(--surface2);font-weight:600;font-size:11px}
+.cost-table input{width:100%;border:1px solid var(--border2);border-radius:5px;padding:4px;font-size:12px;text-align:right;background:#fff}
+.cost-table input:focus{outline:1px solid var(--blue)}
+.cost-table .total{font-weight:bold;background:var(--blue-lt);color:var(--blue-dk)}
+.cost-section-title{font-size:13px;font-weight:700;margin:12px 0 6px;padding-bottom:4px;border-bottom:2px solid var(--blue);color:var(--blue-dk)}
 
-/* bar chart */
+/* ── Bar chart ── */
 .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .bar-lbl{font-size:12px;color:var(--text2);width:55px;flex-shrink:0;text-align:right}
 .bar-track{flex:1;height:8px;background:var(--surface2);border-radius:4px;overflow:hidden}
 .bar-fill{height:100%;border-radius:4px;transition:width .4s}
 .bar-val{font-size:11px;color:var(--text2);width:38px;text-align:right}
 
-/* donut placeholder */
+/* ── Donut ── */
 .donut-wrap{display:flex;align-items:center;gap:20px}
 .donut-svg{flex-shrink:0}
 .donut-legend{font-size:12px}
 .dl-item{display:flex;align-items:center;gap:7px;margin-bottom:6px}
 .dl-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 
-/* timeline */
+/* ── Timeline ── */
 .tl{list-style:none}
 .tl-item{display:flex;gap:11px;margin-bottom:12px;align-items:flex-start}
 .tl-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:3px}
 .tl-body{font-size:12px}.tl-date{font-size:10px;color:var(--text3);margin-top:2px}
 
-/* LTA highlight */
-.lta-box{background:#EEEDFE;border:1px solid #AFA9EC;border-radius:8px;padding:12px 14px;margin-bottom:10px}
-.lta-hd{font-size:12px;font-weight:700;color:var(--purple);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+/* ── LTA ── */
+.lta-box{background:var(--purple-lt);border:1px solid #AFA9EC;border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.lta-hd{font-size:12px;font-weight:700;color:var(--purple);margin-bottom:10px;display:flex;align-items:center;gap:6px}
 
-/* filter bar */
+/* ── Filter bar ── */
 .filter-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
-.filter-bar select,.filter-bar input{padding:6px 10px;border:1px solid var(--border2);border-radius:7px;font-size:12px;background:#fff;color:var(--text)}
+.filter-bar select,.filter-bar input{padding:6px 10px;border:1px solid var(--border2);border-radius:8px;font-size:12px;background:#fff;color:var(--text)}
 .date-sep{font-size:12px;color:var(--text3)}
 
-/* invest row */
+/* ── Invest ── */
 .inv-row{display:flex;align-items:center;gap:8px}
 .inv-row input{width:100px}
 .inv-unit{font-size:12px;color:var(--text2);white-space:nowrap}
 .radio-group{display:flex;gap:14px;margin-top:7px}
-.radio-group label{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text);cursor:pointer;font-weight:400}
-
-/* invest detail table */
+.radio-group label{display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer;font-weight:400}
 .inv-tbl input{width:100%;padding:4px 6px;border:1px solid var(--border);border-radius:5px;font-size:12px;background:#fff;color:var(--text);font-family:inherit}
 .inv-tbl td{padding:5px 8px}
 
-/* success/fail indicator */
-.result-won{background:#EAF3DE;border-left:3px solid #3B6D11;padding:10px 14px;border-radius:0 8px 8px 0;margin-bottom:10px}
+/* ── Result indicators ── */
+.result-won{background:#E8F5E9;border-left:3px solid #2E7D32;padding:10px 14px;border-radius:0 8px 8px 0;margin-bottom:10px}
 .result-lost{background:var(--red-lt);border-left:3px solid var(--red);padding:10px 14px;border-radius:0 8px 8px 0;margin-bottom:10px}
 
-/* quote mini table in detail */
+/* ── Quote mini table ── */
 .qt input{width:58px;padding:3px 5px;border:1px solid var(--border);border-radius:4px;font-size:11px;background:#fff;color:var(--text);font-family:inherit}
 .qt select{width:90px;padding:3px 5px;border:1px solid var(--border);border-radius:4px;font-size:11px;background:#fff;color:var(--text)}
+
+/* ── Quote tbody row ── */
+#quote-tbody tr{border-bottom:1px solid var(--border)}
+#quote-tbody tr:hover td{background:#F5F8FF}
+#quote-tbody td{padding:6px 5px;vertical-align:middle}
 </style>
 </head>
 <body>
@@ -179,7 +202,7 @@ tr:last-child td{border-bottom:none}
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-  <div class="logo" style="padding:14px 16px 12px"><div class="logo-text" style="font-size:12px;color:var(--text3);letter-spacing:.04em;text-transform:uppercase;font-weight:400;margin-bottom:3px">Auto 견적 Portal</div><div style="font-family:'Noto Sans KR',sans-serif;font-size:22px;font-weight:900;font-style:italic;color:rgb(0,112,192);letter-spacing:-1px;line-height:1">HWASEUNG</div></div>
+  <div class="logo" style="padding:16px 16px 14px"><div class="logo-text">Auto 견적 Portal</div><div style="font-family:'Noto Sans KR',sans-serif;font-size:24px;font-weight:900;font-style:italic;color:#4FC3F7;letter-spacing:-1px;line-height:1.1;margin-top:4px">HWASEUNG</div></div>
   <div class="nav-sec">메인</div>
   <div class="nav-item active" id="n-dashboard" onclick="nav('dashboard',this)">
     <svg class="ni" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/></svg>
@@ -224,7 +247,7 @@ tr:last-child td{border-bottom:none}
     <div class="topbar-title" id="page-title">Overview</div>
     <div class="topbar-right">
       <button class="btn btn-p btn-sm" onclick="nav('rfqnew',document.getElementById('n-rfqnew'))">+ 신규 견적 등록</button>
-      <div class="user-chip"><div class="ava">유</div>김형석 · FL영업</div>
+      <div class="user-chip"><div class="ava">김</div><span>김형석</span><span style="color:var(--text3);font-size:11px">· FL영업</span></div>
     </div>
   </div>
 
@@ -613,7 +636,7 @@ tr:last-child td{border-bottom:none}
     <div class="tab-pane" id="t-lumpsum">
       <div class="card">
         <div class="card-hd">
-          <div class="card-title">일시불 지급 (Lump Sum)</div>
+          <div class="card-title">일시불 지급 </div>
           <span class="badge b-purple">LTA 연계</span>
         </div>
         <div style="background:#EEEDFE;border:1px solid #AFA9EC;border-radius:8px;padding:12px 14px;margin-bottom:16px">
@@ -670,21 +693,42 @@ tr:last-child td{border-bottom:none}
     <!-- 탭7: 약정 CR (LTA) -->
     <div class="tab-pane" id="t-lta">
       <div class="card">
-        <div class="card-hd"><div class="card-title">약정 단가 인하 조건 (LTA)</div><span class="badge b-purple">초기</span></div>
-       <div class="card" style="font-size:14px;margin-bottom:12px">품번 : 25414-9X000</div>
+        <div class="card-hd">
+          <div class="card-title">약정 단가 인하 조건 (LTA)</div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <span class="badge b-purple">LTA 자동연동</span>
+            <button class="btn btn-sm" style="background:var(--blue-lt);color:var(--blue-dk);border-color:var(--blue)" onclick="syncLtaFromQuote()">↻ 견적 판가 불러오기</button>
+          </div>
+        </div>
+
+        <!-- 견적 등록 연동 안내 -->
+        <div style="background:var(--blue-lt);border:1px solid #B5D4F4;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--blue-dk)">
+          <strong>견적 등록 연동</strong> — 견적 작성에서 입력한 판가(Y0)가 자동으로 반영됩니다. 품번을 선택하면 해당 품번의 기준 판가가 불러와집니다.
+        </div>
+
+        <!-- 품번 선택 드롭다운 (견적 등록과 연동) -->
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:10px 14px;background:var(--bg);border-radius:8px;border:1px solid var(--border)">
+          <span style="font-size:12px;font-weight:600;color:var(--text2);white-space:nowrap">품번 선택</span>
+          <select id="lta-pn-select" style="flex:1;padding:6px 10px;border:1px solid var(--border2);border-radius:7px;font-size:13px;font-weight:600" onchange="onLtaPnChange(this.value)">
+            <option value="">— 품번을 선택하세요 —</option>
+          </select>
+          <div style="font-size:12px;color:var(--text2)">Y0 판가:</div>
+          <div style="font-size:16px;font-weight:700;color:var(--purple);min-width:100px" id="lta-linked-price">—</div>
+        </div>
+
         <div class="lta-box">
           <div class="lta-hd">
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 1L9.8 6H15l-4.1 3 1.6 5L8 11l-4.5 3 1.6-5L1 6h5.2z" stroke="#3C3489" stroke-width="1.3"/></svg>
             LTA 인하 조건 설정 — 구간별 인하율 입력 후 자동 계산
           </div>
           <div class="fr3">
-            <div><div style="font-size:10px;color:var(--purple);opacity:.7">기준 판가 (Y0)</div><div style="font-size:13px;font-weight:600;color:var(--purple)" id="lta-base-display">15,000 원</div></div>
+            <div><div style="font-size:10px;color:var(--purple);opacity:.7">기준 판가 (Y0)</div><div style="font-size:13px;font-weight:600;color:var(--purple)" id="lta-base-display">— 원</div></div>
             <div><div style="font-size:10px;color:var(--purple);opacity:.7">계약 체결일</div><div style="font-size:13px;font-weight:600;color:var(--purple)">2026.04.20</div></div>
-            <div><div style="font-size:10px;color:var(--purple);opacity:.7">총 인하 구간</div><div style="font-size:13px;font-weight:600;color:var(--purple)" id="lta-total-bands">2구간</div></div>
+            <div><div style="font-size:10px;color:var(--purple);opacity:.7">총 인하 구간</div><div style="font-size:13px;font-weight:600;color:var(--purple)" id="lta-total-bands">단일 조건</div></div>
           </div>
         </div>
 
-        <!-- LTA 조건 입력 (단일 조건) -->
+        <!-- LTA 조건 입력 -->
         <div class="card-title" style="font-size:12px;margin-bottom:12px">인하 조건</div>
         <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--bg);border-radius:8px;border:1px solid var(--border);margin-bottom:16px">
           <span style="font-size:13px;color:var(--text2);white-space:nowrap">연간 인하율</span>
@@ -692,10 +736,10 @@ tr:last-child td{border-bottom:none}
           <span style="font-size:14px;font-weight:600;color:var(--text2)">%  ×</span>
           <input type="number" id="lta-years" value="2" min="1" max="10" style="width:60px;padding:7px 10px;border:1px solid var(--border2);border-radius:7px;font-size:16px;font-weight:700;text-align:center" oninput="calcLTA()">
           <span style="font-size:14px;font-weight:600;color:var(--text2)">년</span>
-          <div style="margin-left:16px;padding:8px 14px;background:var(--purple-lt,#EEEDFE);border-radius:7px;font-size:12px;color:var(--purple);font-weight:600" id="lta-summary">연 2.0% × 3년</div>
+          <div style="margin-left:16px;padding:8px 14px;background:var(--purple-lt,#EEEDFE);border-radius:7px;font-size:12px;color:var(--purple);font-weight:600" id="lta-summary">연 3.0% × 2년</div>
         </div>
         <div class="fr2">
-          <div class="fg"><label>기준 판가 (Y0, 원)</label><input class="fc" id="lta-base" value="15,000" oninput="calcLTA()"></div>
+          <div class="fg"><label>기준 판가 (Y0, 원) — 견적 등록 연동 또는 직접 입력</label><input class="fc" id="lta-base" value="" placeholder="견적 판가 불러오기 또는 직접 입력" oninput="calcLTA()"></div>
           <div class="fg"><label>LTA 연도 (시작 시점)</label><input type="date" class="fc" id="lta-sop" value="2029-01-01" oninput="calcLTA()"></div>
         </div>
 
@@ -1030,7 +1074,10 @@ tr:last-child td{border-bottom:none}
       <div class="card">
         <div class="card-hd">
           <div class="card-title">견적 작성 (Y0~Y5)</div>
-          <div style="display:flex;gap:8px"><button class="btn btn-sm">Excel 내보내기</button><button class="btn btn-sm">PDF 미리보기</button></div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-sm" onclick="openExportModal()"> 보고서 내보내기</button>
+            <button class="btn btn-sm">Excel 내보내기</button>
+          </div>
         </div>
         <div style="display:flex;align-items:center;gap:16px;padding:10px 14px;background:var(--bg);border-radius:7px;margin-bottom:12px;flex-wrap:wrap">
           <span style="font-size:11px;font-weight:600;color:var(--text2)">통화 / 환율</span>
@@ -1050,16 +1097,27 @@ tr:last-child td{border-bottom:none}
           </div>
         </div>
         <div style="overflow-x:auto">
-          <table style="min-width:700px;border-collapse:collapse;table-layout:fixed">
-            <colgroup><col style="width:120px"/><col style="width:140px"/><col style="width:50px"/><col style="width:95px"/><col style="width:100px"/><col style="width:90px"/><col style="width:80px"/><col style="width:110px"/><col style="width:110px"/><col style="width:90px"/>
-        </colgroup>
+          <table style="min-width:800px;border-collapse:collapse;table-layout:fixed">
+            <colgroup>
+              <col style="width:110px"/><col style="width:130px"/><col style="width:40px"/><col style="width:80px"/>
+              <col style="width:90px"/><col style="width:90px"/><col style="width:75px"/>
+              <col style="width:70px"/><col style="width:70px"/><col style="width:70px"/><col style="width:36px"/>
+            </colgroup>
             <thead>
-    <tr>
-        <th>품번</th><th>품명</th><th>U/S</th><th>라인</th>
-        <th>수량 기준</th><th>판가 기준</th>
-        <th>원가</th>
-    </tr>
-    </thead>
+              <tr style="background:var(--surface2)">
+                <th style="text-align:center">품번</th>
+                <th style="text-align:center">품명</th>
+                <th style="text-align:center">Usage</th>
+                <th style="text-align:center">라인</th>
+                <th style="text-align:center;color:var(--blue-dk)">수량<br><span style="font-weight:400;font-size:10px;color:var(--text3)">Y(기준)</span></th>
+                <th style="text-align:center;color:var(--purple)">판가<br><span style="font-weight:400;font-size:10px;color:var(--text3)">Y0기준</span></th>
+                <th style="text-align:center">원가</th>
+                <th style="text-align:center;background:var(--blue-lt);color:var(--blue-dk)">수량</th>
+                <th style="text-align:center;background:var(--purple-lt);color:var(--purple)">판가</th>
+                <th style="text-align:center">원가</th>
+                <th></th>
+              </tr>
+            </thead>
             <tbody id="quote-tbody"></tbody>
           </table>
         </div>
@@ -1199,25 +1257,31 @@ tr:last-child td{border-bottom:none}
 <div class="modal-overlay" id="vol-modal">
   <div class="modal-content" style="max-width:520px">
     <div class="modal-header">
-      <h2 class="modal-title" id="vol-modal-title">수량 입력</h2>
+    <h2 class="modal-title" id="vol-modal-title">수량 입력 — Y(기준) / Y0~Y5</h2>
       <button class="modal-close" onclick="closeVolModal()">&times;</button>
     </div>
     <div class="modal-body">
-      <div style="background:var(--blue-lt);border:1px solid #B5D4F4;border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:var(--blue-dk)">
-        <strong>기준수량</strong>은 Y0 수량이 메인 테이블에 표시됩니다. Y0~Y5를 각각 입력하세요.
+      <div style="background:var(--blue-lt);border:1px solid #B5D4F4;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--blue-dk)">
+        <strong>Y(기준)</strong>은 보고서 기준 수량입니다. SOP EOP 해당 년도 제외 평균 대수[추천]. 테이블에는 Y(기준)이 표시됩니다.
       </div>
       <table class="cost-table" style="width:100%">
         <thead>
-          <tr><th style="width:100px">연도</th><th>수량 (대/연)</th><th style="width:120px">비고</th></tr>
+          <tr><th style="width:30px">#</th><th style="width:130px">구분</th><th>수량 (대/연)</th><th style="width:130px">비고</th></tr>
         </thead>
         <tbody>
-          <tr><td style="font-weight:600;color:var(--blue-dk)">기준수량 (Y0)</td><td><input type="number" id="vm-y0" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note0" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
-          <tr><td>Y1</td><td><input type="number" id="vm-y1" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note1" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
-          <tr><td>Y2</td><td><input type="number" id="vm-y2" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note2" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
-          <tr><td>Y3</td><td><input type="number" id="vm-y3" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note3" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
-          <tr><td>Y4</td><td><input type="number" id="vm-y4" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note4" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
-          <tr><td>Y5</td><td><input type="number" id="vm-y5" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note5" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
-          <tr class="total"><td colspan="1" style="font-weight:700">총 누적수량</td><td id="vm-total" style="font-weight:700;color:var(--blue-dk)">0</td><td></td></tr>
+          <tr style="background:#FFF8E7">
+            <td style="font-weight:700;color:var(--amber);font-size:13px">★</td>
+            <td style="font-weight:700;color:var(--amber)">Y(기준)<br><span style="font-size:10px;font-weight:400;color:var(--text3)">보고서 기준 수량</span></td>
+            <td><input type="number" id="vm-ybase" placeholder="0" oninput="onVolInput()" style="border:1.5px solid var(--amber)"></td>
+            <td><input id="vm-notebase" placeholder="연간 기준 수량" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td>
+          </tr>
+          <tr><td style="color:var(--text3)">0</td><td style="font-weight:600;color:var(--blue-dk)">Y0 (SOP)</td><td><input type="number" id="vm-y0" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note0" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td style="color:var(--text3)">1</td><td>Y1</td><td><input type="number" id="vm-y1" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note1" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td style="color:var(--text3)">2</td><td>Y2</td><td><input type="number" id="vm-y2" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note2" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td style="color:var(--text3)">3</td><td>Y3</td><td><input type="number" id="vm-y3" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note3" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td style="color:var(--text3)">4</td><td>Y4</td><td><input type="number" id="vm-y4" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note4" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr><td style="color:var(--text3)">5</td><td>Y5</td><td><input type="number" id="vm-y5" placeholder="0" oninput="onVolInput()"></td><td><input id="vm-note5" placeholder="비고" style="width:100%;border:1px solid var(--border2);border-radius:4px;padding:4px;font-size:12px"></td></tr>
+          <tr class="total"><td colspan="2" style="font-weight:700">Y0~Y5 총 누적수량</td><td id="vm-total" style="font-weight:700;color:var(--blue-dk)">0</td><td></td></tr>
         </tbody>
       </table>
       <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px">
@@ -1254,11 +1318,19 @@ tr:last-child td{border-bottom:none}
           <div>
             <div style="font-size:11px;color:var(--purple);opacity:.8;margin-bottom:4px;font-weight:600">인하 적용 기간 (Y)</div>
             <select id="pm-years" style="width:100%;padding:7px 10px;border:1px solid #AFA9EC;border-radius:7px;font-size:13px;background:#fff;color:var(--text)" onchange="calcPriceModal()">
-              <option value="5" selected>Y0~Y5 (5년)</option>
-              <option value="4">Y0~Y4 (4년)</option>
-              <option value="3">Y0~Y3 (3년)</option>
-              <option value="2">Y0~Y2 (2년)</option>
-              <option value="1">Y0~Y1 (1년)</option>
+              <optgroup label="Y0 시작 (Y0부터 인하)">
+                <option value="5" selected>Y0~Y5 (5년)</option>
+                <option value="4">Y0~Y4 (4년)</option>
+                <option value="3">Y0~Y3 (3년)</option>
+                <option value="2">Y0~Y2 (2년)</option>
+                <option value="1">Y0~Y1 (1년)</option>
+              </optgroup>
+              <optgroup label="Y1 시작 (Y1부터 인하)">
+                <option value="y1-5">Y1~Y5 (4년)</option>
+                <option value="y1-4">Y1~Y4 (3년)</option>
+                <option value="y1-3">Y1~Y3 (2년)</option>
+                <option value="y1-2">Y1~Y2 (1년)</option>
+              </optgroup>
             </select>
           </div>
         </div>
@@ -1287,6 +1359,76 @@ tr:last-child td{border-bottom:none}
   </div>
 </div>
 
+
+
+<!-- Excel 내보내기 / 보고서 Modal -->
+<div class="modal-overlay" id="export-modal">
+  <div class="modal-content" style="max-width:700px">
+    <div class="modal-header">
+      <h2 class="modal-title">📊 보고서 내보내기</h2>
+      <button class="modal-close" onclick="document.getElementById('export-modal').classList.remove('active')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div style="font-size:12px;color:var(--text2);margin-bottom:16px">보고서 유형을 선택하고 정보를 확인 후 생성하세요.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px">
+        <div id="export-mid-card" onclick="selectExportType('mid')" style="padding:18px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .15s;user-select:none">
+          <div style="font-size:22px;margin-bottom:8px"></div>
+          <div style="font-weight:700;font-size:14px;margin-bottom:5px">중간 보고</div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.6">진행 단계 보고용<br>견적 현황·진행 상황 요약<br>미확정 항목 포함</div>
+          <div style="margin-top:10px"><span class="badge b-amber">진행중</span></div>
+        </div>
+        <div id="export-final-card" onclick="selectExportType('final')" style="padding:18px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .15s;user-select:none">
+          <div style="font-size:22px;margin-bottom:8px">✅</div>
+          <div style="font-weight:700;font-size:14px;margin-bottom:5px">최종 보고</div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.6">수주 확정 후 경영진 보고용<br>수주 내역·이익율·LTA 조건 포함<br>공식 보고 형식</div>
+          <div style="margin-top:10px"><span class="badge b-green">수주 확정</span></div>
+        </div>
+      </div>
+      <div id="export-form" style="display:none;border-top:1px solid var(--border);padding-top:16px">
+        <div style="font-size:12px;font-weight:600;color:var(--blue-dk);margin-bottom:12px">📝 보고서 기본 정보</div>
+        <div class="fr3">
+          <div class="fg" style="margin-bottom:10px"><label>보고 일자</label><input type="date" class="fc" id="exp-date" style="font-size:12px"></div>
+          <div class="fg" style="margin-bottom:10px"><label>업체명</label><input class="fc" id="exp-company" placeholder="예: 현대터키" style="font-size:12px"></div>
+          <div class="fg" style="margin-bottom:10px"><label>차종</label><input class="fc" id="exp-model" placeholder="예: i20" style="font-size:12px"></div>
+        </div>
+        <div class="fr3">
+          <div class="fg" style="margin-bottom:10px"><label>품목명</label><input class="fc" id="exp-item" placeholder="예: Brake Hose Assy" style="font-size:12px"></div>
+          <div class="fg" style="margin-bottom:10px"><label>SOP</label><input class="fc" id="exp-sop" placeholder="예: 2026.3" style="font-size:12px"></div>
+          <div class="fg" style="margin-bottom:10px"><label>소요량 (EA/年)</label><input class="fc" id="exp-vol" placeholder="예: 123,000" style="font-size:12px"></div>
+        </div>
+        <div class="fr3">
+          <div class="fg" style="margin-bottom:10px"><label>LTA 조건</label><input class="fc" id="exp-lta" placeholder="예: 3.5/3.5/3.5" style="font-size:12px"></div>
+          <div class="fg" style="margin-bottom:10px"><label>입찰방법</label><select class="fc" id="exp-bid" style="font-size:12px"><option>심의</option><option>경쟁</option><option>전략</option><option>기타</option></select></div>
+          <div class="fg" style="margin-bottom:10px"><label>담당자</label><input class="fc" id="exp-manager" placeholder="예: 김형석" style="font-size:12px"></div>
+        </div>
+        <div class="fr2">
+          <div class="fg" style="margin-bottom:10px"><label>특이사항</label><textarea class="fc" id="exp-special" placeholder="예: 생산공장: 현대터키&#10;BC3 후속" style="min-height:60px;font-size:12px"></textarea></div>
+          <div class="fg" style="margin-bottom:10px"><label>투자비 내역</label><textarea class="fc" id="exp-invest" placeholder="예: 설비투자비: 0 (기존설비 활용)&#10;금형비: 상각기준 견적" style="min-height:60px;font-size:12px"></textarea></div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:4px">
+          <button class="btn btn-sm" onclick="document.getElementById('export-modal').classList.remove('active')">취소</button>
+          <button class="btn btn-sm btn-p" onclick="generateReport()">📊 보고서 생성 →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 보고서 미리보기 Modal -->
+<div class="modal-overlay" id="report-modal">
+  <div class="modal-content" style="max-width:900px">
+    <div class="modal-header">
+      <h2 class="modal-title" id="report-modal-title">수주 보고서 미리보기</h2>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn-sm btn-p" onclick="printReport()">🖨️ 인쇄 / PDF 저장</button>
+        <button class="modal-close" onclick="document.getElementById('report-modal').classList.remove('active')">&times;</button>
+      </div>
+    </div>
+    <div style="padding:0 20px 20px">
+      <div id="report-preview"></div>
+    </div>
+  </div>
+</div>
 
 <div class="modal-overlay" id="cost-modal">
     <div class="modal-content">
@@ -1502,34 +1644,48 @@ function onNumBlur(el){ const n=parseFloat(String(el.value).replace(/,/g,'')); i
 
 function makeRow(uuid){
   const opts=LINE_OPTS.map(l=>`<option>${l}</option>`).join('');
-  // Hidden inputs for Y0-Y5 volumes and prices
   const hiddenVols = [0,1,2,3,4,5].map(y=>`<input type="hidden" name="y${y}_vol" value="0">`).join('');
   const hiddenPrices = [0,1,2,3,4,5].map(y=>`<input type="hidden" name="price_y${y}" value="0">`).join('');
   const tr=document.createElement('tr');
   tr.setAttribute('data-row-id', uuid);
   tr.innerHTML=`
-    <td><input name="pn" style="width:100%; font-size:11px;"></td>
-    <td><input name="p-name" style="width:100%; font-size:11px;"></td>
+    <td><input name="pn" style="width:100%;padding:3px 5px;border:1px solid #ddd;border-radius:4px;font-size:11px;font-weight:600"></td>
+    <td><input name="p-name" style="width:100%;padding:3px 5px;border:1px solid #ddd;border-radius:4px;font-size:11px"></td>
     <td><input name="usage" type="number" value="1" style="${IS_NUM}" oninput="calcSum()"></td>
-    <td><select name="line" style="width:100%; font-size:11px;">${opts}</select></td>
-    <td style="text-align:center">
-      <span name="base_vol_display" style="font-size:12px;font-weight:600;color:var(--blue)">—</span>
+    <td><select name="line" style="width:100%;padding:3px 4px;border:1px solid #ddd;border-radius:4px;font-size:11px;">${opts}</select></td>
+    <td style="text-align:center;min-width:90px">
+      <div style="font-size:11px;color:var(--text3);margin-bottom:2px">Y(기준)</div>
+      <span name="base_vol_display" style="font-size:13px;font-weight:700;color:var(--blue-dk)">—</span>
       ${hiddenVols}
+      <input type="hidden" name="ybase_vol" value="0">
     </td>
-    <td style="text-align:center">
-      <span name="base_price_display" style="font-size:12px;font-weight:600;color:var(--blue)">—</span>
+    <td style="text-align:center;min-width:90px">
+      <div style="font-size:11px;color:var(--text3);margin-bottom:2px">Y0 판가</div>
+      <span name="base_price_display" style="font-size:13px;font-weight:700;color:var(--purple)">—</span>
       ${hiddenPrices}
     </td>
-    <td><input name="cost" style="${IS_NUM}" oninput="calcSum()" onblur="onNumBlur(this)"></td>
-    <td style="text-align:center">
-      <button class="btn btn-sm" style="font-size:11px;background:var(--blue-lt);color:var(--blue-dk);border-color:var(--blue)" onclick="openVolModal('${uuid}')">수량 상세</button>
+    <td><input name="cost" style="${IS_NUM}" oninput="calcSum()" onblur="onNumBlur(this)" placeholder="-"></td>
+    <td style="text-align:center;padding:4px">
+      <button class="btn btn-sm" style="font-size:10px;padding:3px 7px;background:var(--blue-lt);color:var(--blue-dk);border-color:var(--blue);white-space:nowrap" onclick="openVolModal('${uuid}')"> 수량 상세</button>
     </td>
-    <td style="text-align:center">
-      <button class="btn btn-sm" style="font-size:11px;background:var(--purple-lt);color:var(--purple);border-color:#AFA9EC" onclick="openPriceModal('${uuid}')">판가 상세</button>
+    <td style="text-align:center;padding:4px">
+      <button class="btn btn-sm" style="font-size:10px;padding:3px 7px;background:var(--purple-lt);color:var(--purple);border-color:#AFA9EC;white-space:nowrap" onclick="openPriceModal('${uuid}')"> 판가 상세</button>
     </td>
-    <td><button class="btn btn-sm" onclick="openCostModal('${uuid}')">원가 상세</button></td>
+    <td style="text-align:center;padding:4px">
+      <button class="btn btn-sm" style="font-size:10px;padding:3px 7px;white-space:nowrap" onclick="openCostModal('${uuid}')"> 원가 상세</button>
+    </td>
+    <td style="text-align:center;padding:4px">
+      <button class="btn-ghost" style="color:var(--red);font-size:14px;padding:2px 6px" onclick="removeRow(this)" title="행 삭제">✕</button>
+    </td>
     `;
   return tr;
+}
+
+function removeRow(btn){ btn.closest('tr').remove(); calcSum(); }
+
+function initRows(){
+  const tb=document.getElementById('quote-tbody');
+  if(tb){tb.innerHTML='';addRow();}
 }
 
 function addRow(){
@@ -1865,8 +2021,11 @@ function openVolModal(rowId) {
   activeVolRowId = rowId;
   const mainRow = document.querySelector(`tr[data-row-id="${rowId}"]`);
   const pn = mainRow.querySelector('[name="pn"]').value;
-  document.getElementById('vol-modal-title').textContent = `수량 입력 — 품번: ${pn || '(미입력)'}`;
-  // Load existing values
+  document.getElementById('vol-modal-title').textContent = ` 수량 입력 — 품번: ${pn || '(미입력)'}`;
+  // Load Y(기준)
+  const ybaseHidden = mainRow.querySelector('[name="ybase_vol"]');
+  document.getElementById('vm-ybase').value = ybaseHidden && ybaseHidden.value && ybaseHidden.value !== '0' ? ybaseHidden.value : '';
+  // Load Y0~Y5
   for (let y = 0; y <= 5; y++) {
     const val = mainRow.querySelector(`[name="y${y}_vol"]`).value;
     document.getElementById(`vm-y${y}`).value = val && val !== '0' ? val : '';
@@ -1891,14 +2050,19 @@ function onVolInput() {
 function saveVolModal() {
   const mainRow = document.querySelector(`tr[data-row-id="${activeVolRowId}"]`);
   if (!mainRow) return;
+  // Save Y(기준)
+  const ybaseVal = parseFloat(document.getElementById('vm-ybase').value) || 0;
+  const ybaseHidden = mainRow.querySelector('[name="ybase_vol"]');
+  if(ybaseHidden) ybaseHidden.value = ybaseVal;
+  // Save Y0~Y5
   for (let y = 0; y <= 5; y++) {
     const val = parseFloat(document.getElementById(`vm-y${y}`).value) || 0;
     mainRow.querySelector(`[name="y${y}_vol"]`).value = val;
   }
-  // Display base quantity (Y0) in the main table
-  const y0val = parseFloat(document.getElementById('vm-y0').value) || 0;
+  // Display Y(기준) in main table (fallback to Y0 if blank)
+  const displayVal = ybaseVal || (parseFloat(document.getElementById('vm-y0').value) || 0);
   const displayEl = mainRow.querySelector('[name="base_vol_display"]');
-  if (displayEl) displayEl.textContent = y0val ? y0val.toLocaleString('ko-KR') : '—';
+  if (displayEl) displayEl.textContent = displayVal ? displayVal.toLocaleString('ko-KR') : '—';
   closeVolModal();
   calcSum();
 }
@@ -1983,6 +2147,266 @@ function savePriceModal() {
   if (displayEl) displayEl.textContent = y0price ? y0price.toLocaleString('ko-KR') : '—';
   closePriceModal();
   calcSum();
+}
+
+
+/* ── LTA ↔ 견적 등록 연동 ── */
+function syncLtaFromQuote() {
+  const rows = document.querySelectorAll('#quote-tbody tr');
+  const sel = document.getElementById('lta-pn-select');
+  if (!sel) return;
+  // Rebuild options
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">— 품번을 선택하세요 —</option>';
+  rows.forEach(row => {
+    const pn = row.querySelector('[name="pn"]')?.value?.trim();
+    const p0 = row.querySelector('[name="price_y0"]')?.value;
+    if (pn) {
+      const opt = document.createElement('option');
+      opt.value = row.getAttribute('data-row-id');
+      opt.textContent = pn + (p0 && p0 !== '0' ? ` (Y0: ${Number(p0).toLocaleString()}원)` : ' (판가 미입력)');
+      opt.dataset.price = p0 || '0';
+      opt.dataset.pn = pn;
+      sel.appendChild(opt);
+    }
+  });
+  if (cur) sel.value = cur;
+  if (rows.length === 0) {
+    alert('견적 작성 탭에서 품번 및 판가를 먼저 입력하세요.');
+  } else {
+    // Auto-select first if only one
+    if (sel.options.length === 2) { sel.selectedIndex = 1; onLtaPnChange(sel.value); }
+    else { alert(`${sel.options.length - 1}개 품번을 불러왔습니다. 품번을 선택하세요.`); }
+  }
+}
+
+function onLtaPnChange(rowId) {
+  const sel = document.getElementById('lta-pn-select');
+  const opt = sel.querySelector(`option[value="${rowId}"]`);
+  const priceEl = document.getElementById('lta-linked-price');
+  const baseInput = document.getElementById('lta-base');
+  if (!opt || !rowId) {
+    if (priceEl) priceEl.textContent = '—';
+    return;
+  }
+  const price = opt.dataset.price || '0';
+  const priceFmt = price && price !== '0' ? Number(price).toLocaleString() + ' 원' : '—';
+  if (priceEl) priceEl.textContent = priceFmt;
+  if (baseInput && price && price !== '0') {
+    baseInput.value = price;
+    calcLTA();
+  }
+}
+
+/* ── Excel 내보내기 / 보고서 ── */
+let exportType = 'mid';
+
+function openExportModal() {
+  // Pre-fill with quote data
+  const today = new Date().toISOString().split('T')[0];
+  const dateEl = document.getElementById('exp-date');
+  if (dateEl && !dateEl.value) dateEl.value = today;
+  // Auto-fill from first quote row
+  const firstRow = document.querySelector('#quote-tbody tr');
+  if (firstRow) {
+    const pn = firstRow.querySelector('[name="pn"]')?.value;
+    const pname = firstRow.querySelector('[name="p-name"]')?.value;
+    const itemEl = document.getElementById('exp-item');
+    if (itemEl && !itemEl.value && pname) itemEl.value = pname;
+  }
+  // Auto-fill LTA
+  const ltaBase = document.getElementById('lta-base')?.value;
+  const ltaRate = document.getElementById('lta-rate')?.value;
+  const ltaYears = document.getElementById('lta-years')?.value;
+  const ltaEl = document.getElementById('exp-lta');
+  if (ltaEl && !ltaEl.value && ltaRate && ltaYears) {
+    const rateStr = Array(parseInt(ltaYears)).fill(parseFloat(ltaRate).toFixed(1)).join('/');
+    ltaEl.value = rateStr;
+  }
+  document.getElementById('export-modal').classList.add('active');
+  selectExportType(exportType);
+}
+
+function selectExportType(type) {
+  exportType = type;
+  const midCard = document.getElementById('export-mid-card');
+  const finalCard = document.getElementById('export-final-card');
+  const form = document.getElementById('export-form');
+  if (type === 'mid') {
+    midCard.style.border = '2px solid var(--blue)';
+    midCard.style.background = 'var(--blue-lt)';
+    finalCard.style.border = '2px solid var(--border)';
+    finalCard.style.background = '#fff';
+  } else {
+    finalCard.style.border = '2px solid var(--green)';
+    finalCard.style.background = 'var(--green-lt)';
+    midCard.style.border = '2px solid var(--border)';
+    midCard.style.background = '#fff';
+  }
+  form.style.display = 'block';
+}
+
+function generateReport() {
+  const d = {
+    type: exportType,
+    date: document.getElementById('exp-date')?.value || '',
+    company: document.getElementById('exp-company')?.value || '—',
+    model: document.getElementById('exp-model')?.value || '—',
+    item: document.getElementById('exp-item')?.value || '—',
+    sop: document.getElementById('exp-sop')?.value || '—',
+    vol: document.getElementById('exp-vol')?.value || '—',
+    lta: document.getElementById('exp-lta')?.value || '—',
+    bid: document.getElementById('exp-bid')?.value || '심의',
+    manager: document.getElementById('exp-manager')?.value || '—',
+    special: document.getElementById('exp-special')?.value || '',
+    invest: document.getElementById('exp-invest')?.value || ''
+  };
+
+  // Gather quote rows
+  const rows = document.querySelectorAll('#quote-tbody tr');
+  const items = [];
+  rows.forEach(row => {
+    const getV = n => row.querySelector(`[name="${n}"]`)?.value || '';
+    const pn = getV('pn'); if (!pn) return;
+    const p0 = parseFloat(getV('price_y0')) || 0;
+    const vol = parseFloat(getV('ybase_vol')) || parseFloat(getV('y0_vol')) || 0;
+    const cost = parseFloat(getV('cost').replace(/,/g,'')) || 0;
+    const usage = parseFloat(getV('usage')) || 1;
+    const annualSales = vol * p0 * usage;
+    const totalVol = [0,1,2,3,4,5].reduce((s,y)=>s+(parseFloat(row.querySelector(`[name="y${y}_vol"]`)?.value)||0),0);
+    let totalSales = 0;
+    for(let y=0;y<=5;y++){
+      const v=parseFloat(row.querySelector(`[name="y${y}_vol"]`)?.value)||0;
+      const p=parseFloat(row.querySelector(`[name="price_y${y}"]`)?.value)||0;
+      totalSales+=v*p*usage;
+    }
+    const initMargin = p0>0&&cost>0 ? ((p0-cost)/p0*100).toFixed(1) : '—';
+    const avgMargin = totalSales>0 ? ((totalSales - totalVol*cost*usage)/totalSales*100).toFixed(1) : '—';
+    items.push({pn, pname:getV('p-name'), line:getV('line'), p0, vol, cost, annualSales, totalSales, initMargin, avgMargin});
+  });
+
+  // Totals
+  const totalAnnual = items.reduce((s,r)=>s+r.annualSales,0);
+  const totalAll = items.reduce((s,r)=>s+r.totalSales,0);
+  const totalAnnualOk = items.filter(r=>r.annualSales>0);
+  const avgInit = totalAnnualOk.length ? (totalAnnualOk.reduce((s,r)=>s+parseFloat(r.initMargin||0),0)/totalAnnualOk.length).toFixed(1) : '—';
+  const avgFinal = totalAnnualOk.length ? (totalAnnualOk.reduce((s,r)=>s+parseFloat(r.avgMargin||0),0)/totalAnnualOk.length).toFixed(1) : '—';
+
+  const dateStr = d.date ? d.date.replace(/-/g,'.') : new Date().toISOString().split('T')[0].replace(/-/g,'.');
+  const typeLbl = d.type === 'mid' ? '중간 보고' : '최종 보고';
+  const statusBadge = d.type === 'mid'
+    ? '<span style="background:#FAEEDA;color:#BA7517;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700">진행중</span>'
+    : '<span style="background:#EAF3DE;color:#3B6D11;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700">수주 확정</span>';
+
+  const specialLines = d.special.split('\n').filter(Boolean).map(l=>`<li style="margin-bottom:3px">${l}</li>`).join('');
+  const investLines = d.invest.split('\n').filter(Boolean).map(l=>`<li style="margin-bottom:3px">${l}</li>`).join('');
+
+  const itemRows = items.length > 0 ? items.map(it=>`
+    <tr>
+      <td>${it.company||d.company}</td>
+      <td>${d.model}</td>
+      <td>${d.sop}</td>
+      <td>${it.pn}<br><span style="font-size:10px;color:#666">${it.pname}</span></td>
+      <td style="text-align:right">${it.vol ? it.vol.toLocaleString() : '—'}</td>
+      <td style="text-align:right;font-weight:600;color:#185FA5">${it.annualSales ? (it.annualSales/1e8).toFixed(1) : '—'}</td>
+      <td style="text-align:right">${it.annualSales ? ((it.annualSales/1e8)*0.1).toFixed(1) : '—'}</td>
+      <td style="text-align:center">${it.initMargin !== '—' ? it.initMargin+'%' : '—'}</td>
+      <td style="text-align:center;font-weight:700;color:${parseFloat(it.avgMargin)>=10?'#A32D2D':parseFloat(it.avgMargin)>=5?'#3B6D11':'#5F5E5A'}">${it.avgMargin !== '—' ? it.avgMargin+'%' : '—'}</td>
+      <td>LTA : ${d.lta}</td>
+    </tr>`) .join('') : `<tr><td colspan="10" style="text-align:center;color:#999;padding:16px">견적 데이터가 없습니다</td></tr>`;
+
+  const totalRow = `
+    <tr style="background:#D9E8F5;font-weight:700">
+      <td colspan="5" style="text-align:center;font-size:13px;letter-spacing:.05em">TOTAL</td>
+      <td style="text-align:right;color:#185FA5;font-size:13px">${totalAnnual?(totalAnnual/1e8).toFixed(1):'—'}</td>
+      <td style="text-align:right">${totalAnnual?((totalAnnual/1e8)*0.1).toFixed(1):'—'}</td>
+      <td style="text-align:center">${avgInit !== '—' ? avgInit+'%' : '—'}</td>
+      <td style="text-align:center;color:${parseFloat(avgFinal)>=10?'#A32D2D':parseFloat(avgFinal)>=5?'#3B6D11':'#5F5E5A'}">${avgFinal !== '—' ? avgFinal+'%' : '—'}</td>
+      <td></td>
+    </tr>`;
+
+  const html = `
+  <div style="font-family:'Malgun Gothic','맑은 고딕',Arial,sans-serif;background:#fff;padding:24px 28px;min-width:720px">
+    <!-- 제목 -->
+    <div style="border:2.5px solid #1a1a1a;padding:14px 20px;margin-bottom:20px;display:inline-block;min-width:480px">
+      <span style="font-size:22px;font-weight:900;letter-spacing:-0.5px">${d.company}&nbsp;&nbsp;${d.item} ${typeLbl}</span>
+    </div>
+    <div style="text-align:right;font-size:13px;font-weight:600;margin-bottom:20px;margin-top:-10px">[ ${dateStr} ]</div>
+
+    <!-- 기본 정보 -->
+    <div style="margin-bottom:14px;font-size:13px;line-height:2">
+      <div><strong>1. 업체 : </strong>${d.company}</div>
+      <div><strong>2. 차종 : </strong>${d.model} / SOP: ${d.sop} / VOL: ${d.vol}</div>
+      <div><strong>3. 입찰방법 : </strong>${d.bid}</div>
+      <div><strong>4. 수주내역 : </strong>수주금액 ${totalAnnual?(totalAnnual/1e8).toFixed(1)+'억'  :'—'}, <span style="color:#A32D2D;font-weight:700">평균이익율 ${avgFinal !== '—' ? avgFinal+'%' : '—'}</span></div>
+      ${d.type==='mid'?'<div style="color:#BA7517"><strong>5. 진행상황 : </strong>견적 진행중 — 미확정 항목 포함된 중간 보고입니다.</div>':''}
+    </div>
+
+    <!-- 메인 테이블 -->
+    <div style="font-size:11px;text-align:right;color:#666;margin-bottom:4px">단위 : 백만원</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:18px">
+      <thead>
+        <tr style="background:#C6DFCE">
+          <th rowspan="2" style="border:1px solid #aaa;padding:7px 8px;text-align:center">구 분<br>(업체명)</th>
+          <th rowspan="2" style="border:1px solid #aaa;padding:7px 8px;text-align:center">차 종</th>
+          <th rowspan="2" style="border:1px solid #aaa;padding:7px 8px;text-align:center">SOP</th>
+          <th rowspan="2" style="border:1px solid #aaa;padding:7px 8px;text-align:center">품 목</th>
+          <th rowspan="2" style="border:1px solid #aaa;padding:7px 8px;text-align:center">소요량<br>(EA/年)</th>
+          <th colspan="4" style="border:1px solid #aaa;padding:7px 8px;text-align:center;background:#A8D5B5">당사 견적현황</th>
+          <th rowspan="2" style="border:1px solid #aaa;padding:7px 8px;text-align:center">비 고</th>
+        </tr>
+        <tr style="background:#C6DFCE">
+          <th style="border:1px solid #aaa;padding:6px 8px;text-align:center">년매출</th>
+          <th style="border:1px solid #aaa;padding:6px 8px;text-align:center">이익금액</th>
+          <th style="border:1px solid #aaa;padding:6px 8px;text-align:center">초기이익율<br>(%)</th>
+          <th style="border:1px solid #aaa;padding:6px 8px;text-align:center">평균이익율<br>(%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${itemRows}
+        ${totalRow}
+      </tbody>
+    </table>
+
+    <!-- 특이사항 / 투자비 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="border:2px solid #c00;border-radius:6px;padding:14px 16px;min-height:90px">
+        <div style="font-weight:700;font-size:13px;margin-bottom:8px">[ 특이사항 ]</div>
+        <ul style="padding-left:18px;font-size:12px;line-height:1.8;margin:0">
+          ${specialLines || '<li style="color:#999">없음</li>'}
+        </ul>
+      </div>
+      <div style="border:2px solid #c00;border-radius:6px;padding:14px 16px;min-height:90px">
+        <div style="font-weight:700;font-size:13px;margin-bottom:8px">[ 투자비 ]</div>
+        <ul style="padding-left:18px;font-size:12px;line-height:1.8;margin:0">
+          ${investLines || '<li style="color:#999">없음</li>'}
+        </ul>
+      </div>
+    </div>
+
+    <!-- 담당자 / 로고 -->
+    <div style="text-align:right;font-size:12px;margin-top:16px;color:#555">[HSEU] &nbsp; 담당: ${d.manager}</div>
+  </div>`;
+
+  document.getElementById('report-preview').innerHTML = html;
+  document.getElementById('report-modal-title').textContent = `${d.company} ${d.item} — ${typeLbl} 미리보기`;
+  document.getElementById('export-modal').classList.remove('active');
+  document.getElementById('report-modal').classList.add('active');
+}
+
+function printReport() {
+  const content = document.getElementById('report-preview').innerHTML;
+  const win = window.open('', '_blank', 'width=950,height=700');
+  win.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>수주 보고서</title>
+  <style>
+    body{font-family:'Malgun Gothic','맑은 고딕',Arial,sans-serif;margin:0;padding:20px;background:#fff}
+    table{width:100%;border-collapse:collapse}
+    th,td{border:1px solid #aaa;padding:6px 8px}
+    @media print{body{padding:0}button{display:none}}
+  </style></head><body>${content}</body></html>`);
+  win.document.close();
+  win.focus();
+  setTimeout(()=>win.print(), 400);
 }
 
 
