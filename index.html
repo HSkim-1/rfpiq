@@ -294,6 +294,7 @@ tr:last-child td{border-bottom:none}
           <div class="bar-row"><div class="bar-lbl">B/H</div><div class="bar-track"><div class="bar-fill" style="width:61%;background:var(--blue)"></div></div><div class="bar-val">61%</div></div>
           <div class="bar-row"><div class="bar-lbl">A/C</div><div class="bar-track"><div class="bar-fill" style="width:58%;background:var(--blue)"></div></div><div class="bar-val">58%</div></div>
           <div class="bar-row"><div class="bar-lbl">I/C</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--green)"></div></div><div class="bar-val">80%</div></div>
+          <div class="bar-row"><div class="bar-lbl">P/L</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--green)"></div></div><div class="bar-val">80%</div></div>
           <div class="bar-row"><div class="bar-lbl">저압외</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--green)"></div></div><div class="bar-val">80%</div></div>
           <div class="bar-row"><div class="bar-lbl">B/S</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--amber)"></div></div><div class="bar-val">45%</div></div>
           <div class="bar-row"><div class="bar-lbl">D/S</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--amber)"></div></div><div class="bar-val">45%</div></div>
@@ -332,7 +333,7 @@ tr:last-child td{border-bottom:none}
       <select><option>RHQ</option><option>KRHQ</option><option>ARHQ</option><option>ERHQ</option></select>
       <select><option>FL/SL</option><option>FL</option><option>SL</option></select>
       <select><option>견적 구분</option><option>RFQ</option><option>RFI</option><option>RFP</option><option>사전SR</option></select>
-      <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
+      <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>P/L</option><option>저압외</option><option>W/S</option></select>
       <select><option>입찰구분</option><option>경쟁</option><option>심의</option><option>전략</option></select>
       <select><option>담당자</option><option>김형석</option><option>화승</option><option>이현주</option></select>
       <div class="date-sep">접수일</div>
@@ -423,7 +424,7 @@ tr:last-child td{border-bottom:none}
           </div>
            <div class="fr2">
              <div class="fg"><label>입찰구분</label><select class="fc"><option>경쟁</option><option>심의</option><option>전략</option></select></div>
-             <div class="fg"><label>제품군</label><select class="fc"><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select></div>
+             <div class="fg"><label>제품군</label><select class="fc"><option>B/H</option><option>A/C</option><option>I/C</option><option>P/L</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select></div>
           </div>
            <div class="fr2">
             <div class="fg"><label>수주 Type</label><select class="fc"><option>신규</option><option>C.O</option></select></div>
@@ -762,7 +763,7 @@ tr:last-child td{border-bottom:none}
   <div class="page" id="page-kanban">
     <div class="filter-bar" style="margin-bottom:16px">
       <select><option>RHQ</option><option>KRHQ</option><option>ARHQ</option><option>ERHQ</option></select>
-      <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
+      <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>P/L</option><option>저압외</option><option>W/S</option></select>
       <select><option>담당자</option><option>김형석</option><option>화승</option><option>이현주</option></select>
     </div>
     <div class="kanban">
@@ -841,7 +842,7 @@ tr:last-child td{border-bottom:none}
       <select><option>고객사</option><option>HMG</option><option>STLS</option><option>BMW</option><option>GM</option></select>
       <select><option>담당자</option><option>김형석</option><option>화승</option><option>이현주</option></select>
       <select><option>FL/SL</option><option>FL</option><option>SL</option></select>
-      <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
+      <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>P/L</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
       <select><option value="KRW">KRW (억원)</option><option value="USD">USD (백만)</option><option value="EUR">EUR (백만)</option><option value="CNY">CNY (백만)</option></select>
       <button class="btn btn-p btn-sm">조회</button>
     </div>
@@ -924,7 +925,7 @@ tr:last-child td{border-bottom:none}
       <select><option>RHQ</option><option>KRHQ</option><option>ARHQ</option><option>ERHQ</option></select>
       <select><option>고객사</option><option>HMG</option><option>STLS</option><option>BMW</option><option>GM</option></select>
       <select><option>FL/SL</option><option>FL</option><option>SL</option></select>
-      <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
+      <select><option>제품군</option><option>B/H</option><option>A/C</option><option>I/C</option><option>P/L</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select>
       <select><option value="KRW">KRW (억원)</option><option value="USD">USD (백만)</option><option value="EUR">EUR (백만)</option><option value="CNY">CNY (백만)</option></select>
       <button class="btn btn-p btn-sm">조회</button>
     </div>
@@ -950,6 +951,7 @@ tr:last-child td{border-bottom:none}
         <div class="bar-row"><div class="bar-lbl">B/H</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:var(--blue)"></div></div><div class="bar-val">1,840억</div></div>
         <div class="bar-row"><div class="bar-lbl">A/C</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--blue)"></div></div><div class="bar-val">1,220억</div></div>
         <div class="bar-row"><div class="bar-lbl">I/C</div><div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--teal)"></div></div><div class="bar-val">980억</div></div>
+        <div class="bar-row"><div class="bar-lbl">P/L</div><div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--teal)"></div></div><div class="bar-val">980억</div></div>
         <div class="bar-row"><div class="bar-lbl">저압외</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--blue)"></div></div><div class="bar-val">1,220억</div></div>
         <div class="bar-row"><div class="bar-lbl">B/S</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--amber)"></div></div><div class="bar-val">690억</div></div>
         <div class="bar-row"><div class="bar-lbl">D/S</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--amber)"></div></div><div class="bar-val">550억</div></div>
@@ -1001,7 +1003,7 @@ tr:last-child td{border-bottom:none}
         </div>
          <div class="fr2">
           <div class="fg"><label>입찰구분 *</label><select class="fc"><option>경쟁</option><option>심의</option><option>전략</option></select></div>
-          <div class="fg"><label>제품군 *</label><select class="fc"><option>B/H</option><option>A/C</option><option>I/C</option><option>저압외</option><option>B/S</option><option>D/S</option><option>G/R</option><option>W/S기타</option></select></div>
+          <div class="fg"><label>제품군 *</label><select class="fc"><option>B/H</option><option>A/C</option><option>I/C</option><option>P/L</option><option>저압외</option><option>W/S</option></select></div>
         </div>
         <div class="fr2">
           <div class="fg"><label>수주 Type *</label><select class="fc"><option>신규</option><option>C.O</option></select></div>
@@ -1636,7 +1638,7 @@ function goStep(n){
   if(n===2) onNewStatus(document.getElementById('new-status').value);
 }
 
-const LINE_OPTS=['B/H','A/C','I/C','저압외','D/S','B/S','G/R','W/S기타'];
+const LINE_OPTS=['B/H','A/C','I/C','P/L','저압외','D/S','B/S','G/R','W/S기타'];
 const IS_NUM='width:100%;padding:2px 4px;border:1px solid #ddd;border-radius:4px;font-size:11px;background:#fff;color:#1a1a1a;font-family:inherit;text-align:right';
 
 function fmtNum(v, p=2){ const n=parseFloat(String(v).replace(/,/g,'')); if(isNaN(n)) return v; return n.toLocaleString('ko-KR', {minimumFractionDigits: p, maximumFractionDigits: p});}
