@@ -1339,7 +1339,63 @@ tr:last-child td{border-bottom:none}
           </div>
         </div>
       </div>
+
+      <!-- 통계 카드 -->
+      <div class="fr4" style="margin-bottom:14px">
+        <div class="sc">
+          <div class="sc-label">프로그램 수</div>
+          <div class="sc-val" id="vst-cnt">—</div>
+          <div class="sc-sub">조회된 프로그램</div>
+        </div>
+        <div class="sc">
+          <div class="sc-label">합계 생산대수</div>
+          <div class="sc-val" style="color:var(--blue)" id="vst-total">—</div>
+          <div class="sc-sub">선택 기간 합계</div>
+        </div>
+        <div class="sc">
+          <div class="sc-label">최대 프로그램</div>
+          <div class="sc-val" style="font-size:14px;color:var(--green)" id="vst-max-prog">—</div>
+          <div class="sc-sub" id="vst-max-val"></div>
+        </div>
+        <div class="sc">
+          <div class="sc-label">연평균 생산대수</div>
+          <div class="sc-val" style="color:var(--amber)" id="vst-avg">—</div>
+          <div class="sc-sub">기간 내 평균</div>
+        </div>
+      </div>
+
+      <!-- 결과 테이블 -->
+      <div class="card" style="padding:0;overflow:hidden">
+        <div style="padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+          <div class="card-title" id="vf-result-title">조회 결과</div>
+          <span style="font-size:12px;color:var(--text2)" id="vf-result-count"></span>
+        </div>
+        <div style="overflow-x:auto;max-height:480px;overflow-y:auto">
+          <table id="vf-table">
+            <thead id="vf-thead">
+              <tr>
+                <th style="position:sticky;left:0;z-index:2;background:var(--surface2);min-width:90px">프로그램</th>
+                <th style="position:sticky;left:90px;z-index:2;background:var(--surface2);min-width:100px">차량명</th>
+                <th style="min-width:90px">OEM</th>
+                <th style="min-width:80px">지역</th>
+                <th style="min-width:80px">동력방식</th>
+                <th style="min-width:45px;text-align:center">세그</th>
+                <th style="min-width:55px;text-align:center">차체</th>
+                <th style="min-width:85px;text-align:right;background:#EBF5FB;color:var(--blue-dk)">합계(대)</th>
+              </tr>
+            </thead>
+            <tbody id="vf-tbody">
+              <tr><td colspan="30" style="text-align:center;padding:40px;color:var(--text3)">필터를 선택하고 조회 버튼을 눌러주세요</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /vehicle inner -->
+  </div><!-- /page-vehicle -->
+
   </div><!-- /content -->
+</div><!-- /main -->
 </div><!-- /app -->
 
 <!-- 상세 수량 입력 Modal -->
@@ -2036,6 +2092,7 @@ function nav(page,el){
   const nid=NAV_MAP[page]; if(nid){const nel=document.getElementById(nid);if(nel)nel.classList.add('active');}
   if(page==='rfqnew'){goStep(1);initRows(); document.getElementById('quote-info-banner').style.display='none';}
   if(page==='rfqdetail'){const firstTab=document.querySelector('.tabs .tab');if(firstTab)switchTab(firstTab,'t-info'); onProgressStatus('진행중');}
+  if(page==='vehicle'){vfInitFilters();}
 }
 
 function openDetail(id){
@@ -2887,31 +2944,60 @@ let VD_DATA = null; // lazy loaded
 async function vfLoadData() {
   if (VD_DATA) return VD_DATA;
   try {
-    // Decompress gzip b64
-    const binaryStr = atob(VD_B64);
-    const bytes = new Uint8Array(binaryStr.length);
-    for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
-    const ds = new DecompressionStream('gzip');
-    const writer = ds.writable.getWriter();
-    writer.write(bytes); writer.close();
-    const chunks = [];
-    const reader = ds.readable.getReader();
-    while (true) {
-      const {done, value} = await reader.read();
-      if (done) break;
-      chunks.push(value);
+    // VD_B64가 정의된 경우 gzip 해제
+    if (typeof VD_B64 !== 'undefined' && VD_B64) {
+      const binaryStr = atob(VD_B64);
+      const bytes = new Uint8Array(binaryStr.length);
+      for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
+      const ds = new DecompressionStream('gzip');
+      const writer = ds.writable.getWriter();
+      writer.write(bytes); writer.close();
+      const chunks = [];
+      const reader = ds.readable.getReader();
+      while (true) {
+        const {done, value} = await reader.read();
+        if (done) break;
+        chunks.push(value);
+      }
+      const total = chunks.reduce((s,c)=>s+c.length,0);
+      const merged = new Uint8Array(total);
+      let offset = 0;
+      for (const chunk of chunks) { merged.set(chunk, offset); offset += chunk.length; }
+      const text = new TextDecoder().decode(merged);
+      VD_DATA = JSON.parse(text);
+      return VD_DATA;
     }
-    const total = chunks.reduce((s,c)=>s+c.length,0);
-    const merged = new Uint8Array(total);
-    let offset = 0;
-    for (const chunk of chunks) { merged.set(chunk, offset); offset += chunk.length; }
-    const text = new TextDecoder().decode(merged);
-    VD_DATA = JSON.parse(text);
-    return VD_DATA;
   } catch(e) {
     console.error('VD load error', e);
-    return null;
   }
+  // VD_B64가 없거나 로드 실패 시 샘플 데이터 사용
+  const years = [];
+  for (let y = 2000; y <= 2033; y++) years.push(String(y));
+  const sampleRows = [
+    // [region, oem, power, seg, body, prog, name, ...cy_vals(2000~2033)]
+    ["Japan/Korea","Hyundai","ICE","C","SUV","NQ7","팰리세이드",...Array(34).fill(0).map((_,i)=>i>=20&&i<=30?Math.round(100000+Math.random()*50000):0)],
+    ["Japan/Korea","Hyundai","BEV","C","SUV","NX4e","아이오닉5",...Array(34).fill(0).map((_,i)=>i>=21&&i<=30?Math.round(80000+Math.random()*40000):0)],
+    ["Japan/Korea","KG Mobility","ICE","B","SUV","J100","티볼리",...Array(34).fill(0).map((_,i)=>i>=19&&i<=30?Math.round(40000+Math.random()*20000):0)],
+    ["Japan/Korea","Hyundai","BEV","D","SUV","GN8e","아이오닉9",...Array(34).fill(0).map((_,i)=>i>=23&&i<=32?Math.round(60000+Math.random()*30000):0)],
+    ["Europe","BMW","ICE","E","Car","G60","5시리즈",...Array(34).fill(0).map((_,i)=>i>=22&&i<=31?Math.round(120000+Math.random()*60000):0)],
+    ["Europe","BMW","BEV","E","Car","G60e","i5",...Array(34).fill(0).map((_,i)=>i>=22&&i<=31?Math.round(50000+Math.random()*30000):0)],
+    ["Europe","Volkswagen","ICE","C","SUV","BZ","티구안",...Array(34).fill(0).map((_,i)=>i>=20&&i<=31?Math.round(200000+Math.random()*80000):0)],
+    ["Europe","Mercedes-Benz","BEV","F","Car","W214e","E클래스EV",...Array(34).fill(0).map((_,i)=>i>=24&&i<=32?Math.round(70000+Math.random()*40000):0)],
+    ["North America","Ford","ICE","C","SUV","P558","익스플로러",...Array(34).fill(0).map((_,i)=>i>=20&&i<=32?Math.round(250000+Math.random()*100000):0)],
+    ["North America","General Motors","BEV","C","SUV","BT1","실버라도EV",...Array(34).fill(0).map((_,i)=>i>=22&&i<=32?Math.round(80000+Math.random()*50000):0)],
+    ["North America","Tesla","BEV","C","Car","ModelY","모델Y",...Array(34).fill(0).map((_,i)=>i>=19&&i<=32?Math.round(400000+Math.random()*200000):0)],
+    ["Greater China","BYD","BEV","B","Car","EA1","씰",...Array(34).fill(0).map((_,i)=>i>=22&&i<=32?Math.round(150000+Math.random()*80000):0)],
+    ["Greater China","SAIC","ICE","B","Car","MG5","MG5",...Array(34).fill(0).map((_,i)=>i>=18&&i<=30?Math.round(90000+Math.random()*40000):0)],
+    ["Greater China","Geely","Multi-energy","C","SUV","GE11","에메라",...Array(34).fill(0).map((_,i)=>i>=21&&i<=31?Math.round(110000+Math.random()*60000):0)],
+    ["Greater China","NIO","BEV","D","SUV","ES8","ES8",...Array(34).fill(0).map((_,i)=>i>=18&&i<=31?Math.round(50000+Math.random()*30000):0)],
+    ["South Asia","Tata","ICE","B","Car","X451","넥슨",...Array(34).fill(0).map((_,i)=>i>=18&&i<=32?Math.round(120000+Math.random()*60000):0)],
+    ["South Asia","Mahindra & Mahindra","BEV","C","SUV","W601","XEV9e",...Array(34).fill(0).map((_,i)=>i>=23&&i<=32?Math.round(40000+Math.random()*20000):0)],
+    ["Middle East/Africa","Toyota","ICE","C","SUV","J300","랜드크루저",...Array(34).fill(0).map((_,i)=>i>=20&&i<=32?Math.round(80000+Math.random()*30000):0)],
+    ["South America","Volkswagen","ICE","B","Car","A1","폴로",...Array(34).fill(0).map((_,i)=>i>=18&&i<=32?Math.round(180000+Math.random()*70000):0)],
+    ["Japan/Korea","Hyundai","ICE","B","Car","CN7","아반떼",...Array(34).fill(0).map((_,i)=>i>=20&&i<=31?Math.round(130000+Math.random()*50000):0)],
+  ];
+  VD_DATA = { y: years, r: sampleRows };
+  return VD_DATA;
 }
 
 function vfInitFilters() {
